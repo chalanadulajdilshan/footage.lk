@@ -6,7 +6,7 @@
 @import url("plugins/bootstrap.min.css");
 
 /* == owl.carousel == */
-@import url("plugins/owl.carousel.min.css");
+@import url("../js/libs/owl/dist/assets/owl.carousel.min.css");
 @import url("plugins/owl.theme.default.min.css");
 
 /* == animate css == */

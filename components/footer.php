@@ -37,10 +37,11 @@
                     <div class="widget clearfix usful-links">
                         <h3 class="widget-title">Quick Links</h3>
                         <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="works.html">Works</a></li>
-                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#feedback">Customer feedback</a></li>
+                            <li><a href="#partners">Partners</a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,7 +86,7 @@
         <div class="bottom-footer-text">
             <div class="row copyright">
                 <div class="col-md-8">
-                    <p class="mb-0">Copyright © 2022 by <a href="#">DuruThemes</a>. All rights reserved.</p>
+                    <p class="mb-0">Copyright © <?= date('Y') ?> by <a href="#">footage.lk</a>. All rights reserved.</p>
                 </div>
                 <div class="col-md-4">
                     <div class="social-icons">

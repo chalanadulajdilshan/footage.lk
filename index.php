@@ -28,43 +28,64 @@
     <!-- Slider -->
     <header id="slider-area" class="header slider-fade">
         <div class="ruby-container">
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-theme" id="main-slider">
                 <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-                <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/1.jpg">
+                <div class="text-left item bg-img" data-overlay-dark="2"> 
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/JpxsRwnRwCQ" data-src="https://www.youtube.com/embed/JpxsRwnRwCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="v-middle caption">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <h4>Welcome to my</h4>
+                                <div class="col-md-12">
+                                    <h4>Video</h4>
                                     <h1>Phoxel Studio</h1>
-                                    <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p> <a href="#" class="button-primary">My works</a> <a href="#" class="button-tersiyer">Contact me</a>
+                                    <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p>
+                                    <a href="#services" class="button-tersiyer">Services</a>
+                                    <a href="#portfolio" class="button-primary">Portfolio</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/2.jpg">
+                <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/1.jpg">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/JpxsRwnRwCQ" data-src="https://www.youtube.com/embed/JpxsRwnRwCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="v-middle caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Video</h4>
+                                    <h1>Phoxel Studio</h1>
+                                    <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p>
+                                    <a href="#services" class="button-tersiyer">Services</a>
+                                    <a href="#portfolio" class="button-primary">Portfolio</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/2.jpg">
                     <div class="v-middle caption">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4>Hello there !</h4>
                                     <h1>I'm Martin Dan</h1>
-                                    <p>I am professional photographer based on New York, creating dreamscapes with black, white and shades in-between.</p> <a href="#" class="button-primary">My works</a> <a href="#" class="button-tersiyer">Contact me</a>
+                                    <p>I am professional photographer based on New York, creating dreamscapes with black, white and shades in-between.</p>
+                                    <a href="#services" class="button-tersiyer">Services</a>
+                                    <a href="#portfolio" class="button-primary">Portfolio</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </header>
     <!-- About section -->
-    <section class="about section-padding">
+    <section class="about section-padding" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                    <h2 class="section-title">Hello, I'm Martin Dan, a professional photographer based on New York</h2>
+                    <h2 class="section-title">Who we are</h2>
                     <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold. Viverra tristique usto duis vitae diam neque nivamus estan ateuene artines viverra nec setlie no curabit tristique.</p>
                     <ul class="list-unstyled about-list mb-30">
                         <li>
@@ -103,11 +124,11 @@
         </div>
     </section>
     <!-- Services section -->
-    <section class="services section-padding bg-black">
+    <section class="services section-padding bg-black" id="services">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3 mb-30 text-center">
-                    <h2 class="section-title"><span>My Services</span></h2>
+                    <h2 class="section-title"><span>Our Services</span></h2>
                     <p class="section-title2">Quverra tristique justo duis vitae diam neque nivamus aestan ateuene artinaelition finibus viverra nec lacus setlie suscipe tristique.</p>
                 </div>
             </div>
@@ -151,80 +172,12 @@
             </div>
         </div>
     </section>
-    <!-- News section -->
-    <section class="blog section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 mb-30">
-                    <h2 class="section-title">Latest News</h2>
-                    <hr class="border-2">
-                    <p class="section-title2">Quisque sed tellus nullam biben the volutpat dignissim pretium.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 owl-carousel owl-theme">
-                    <div class="news">
-                        <figure><img src="img/blog/4.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h6>Resources</h6>
-                            <h4><a href="post.html">Cosina announces its fastest full-frame lens, the Nokton 50mm</a></h4>
-                            <p>Photographers viverra tristique duis vitae diam the neque nivamus aestan ateuene artines duru setlie suscipe the fermen.</p>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="post.html" class="link-btn" tabindex="0">Read more</a></div>
-                                <div class="date">20 December 2022</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news left">
-                        <figure><img src="img/blog/3.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h6>Lens News</h6>
-                            <h4>Which Camera Will Survive? Sony a1, Nikon Z9 and Canon R3</h4>
-                            <p>Photographers viverra tristique duis vitae diam the neque nivamus aestan ateuene artines duru setlie suscipe the fermen.</p>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="post.html" class="link-btn" tabindex="0">Read more</a></div>
-                                <div class="date">18 December 2022</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news">
-                        <figure><img src="img/blog/2.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h6>Mobile</h6>
-                            <h4><a href="post.html">The camera components inside the iPhone 11 Pro Max</a></h4>
-                            <p>Photographers viverra tristique duis vitae diam the neque nivamus aestan ateuene artines duru setlie suscipe the fermen.</p>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="post.html" class="link-btn" tabindex="0">Read more</a></div>
-                                <div class="date">16 December 2022</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news left">
-                        <figure><img src="img/blog/1.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h6>Resources</h6>
-                            <h4><a href="post.html">Fujifilm's new Instax Mini Evo Hybrid is an instant camera</a></h4>
-                            <p>Photographers viverra tristique duis vitae diam the neque nivamus aestan ateuene artines duru setlie suscipe the fermen.</p>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="post.html" class="link-btn" tabindex="0">Read more</a></div>
-                                <div class="date">14 December 2022</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Works Gallery -->
-    <section class="section-padding bg-black">
+    <section class="section-padding bg-black" id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-md-5 text-left">
-                    <h2 class="section-title"><span>My Works</span></h2>
+                    <h2 class="section-title"><span>Portfolios</span></h2>
                     <hr class="border-2">
                 </div>
             </div>
@@ -355,7 +308,7 @@
         </div>
     </section>
     <!-- Testiominals -->
-    <section class="testimonials">
+    <section class="testimonials" id="feedback">
         <div class="background bg-img bg-fixed section-padding pb-0" data-background="img/banner/2.jpg" data-overlay-dark="3">
             <div class="container">
                 <div class="row">
@@ -395,7 +348,7 @@
         </div>
     </section>
     <!-- Clients -->
-    <section class="clients">
+    <section class="clients" id="partners">
         <div class="container">
             <div class="row">
                 <div class="col-md-7 owl-carousel owl-theme">
@@ -433,7 +386,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scrollIt.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/libs/owl/dist/owl.carousel.min.js"></script>
+    <!-- <script src="js/libs/owl/src/js/owl-tube.min.js"></script> -->
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
     <script src="js/jquery.stellar.min.js"></script>
     <script src="js/jquery.magnific-popup.js"></script>
     <script src="js/YouTubePopUp.js"></script>

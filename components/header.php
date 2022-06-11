@@ -20,27 +20,13 @@
           <!-- Navbar links -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                  <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                  <li class="nav-item"><a class="nav-link" href="works.html">Works</a></li>
-                  <li class="nav-item dropdown"> <span class="nav-link"> Gallery <i class="ti-angle-down"></i></span>
-                      <ul class="dropdown-menu last">
-                          <li class="dropdown-item"><a href="gallery-01.html">Gallery 01</a></li>
-                          <li class="dropdown-item"><a href="gallery-02.html">Gallery 02</a></li>
-                          <li class="dropdown-item"><a href="video-gallery.html">Gallery 03</a></li>
-                          <!--
-                            <li class="dropdown-item"><span>Dropdown 2 <i class="ti-angle-right"></i></span>
-                                <ul class="sub-menu">
-                                    <li class="dropdown-item"><a href="#">Dropdown 3</a></li>
-                                    <li class="dropdown-item"><a href="#">Dropdown 3</a></li>
-                                </ul>
-                            </li>
-                            -->
-                      </ul>
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li> 
+                  <li class="nav-item"><a class="nav-link" href="#feedback">Customer feedback</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+                  <li class="nav-item"><a class="nav-link" href="//lifeprint.lk">Life Print</a></li>
               </ul>
           </div>
       </div>
