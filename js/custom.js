@@ -298,7 +298,7 @@ $(document).ready(function () {
       });
 
       var currentSlide;
-      currentSlide = $(".owl-item.active");
+      currentSlide = $("#main-slider .owl-item.active");
       player = currentSlide.find("iframe").get(0);
       let src = $(player).attr("src");
       $(player).attr("src", src + "?autoplay=1&controls=1");
