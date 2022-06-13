@@ -1,3 +1,11 @@
+<?php
+include_once "./includes/class-auto-loader.php";
+
+$SLIDER_VIDEO = new Slider(null);
+$SLIDER_VIDEOS = $SLIDER_VIDEO->getActiveSlides();
+
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -30,7 +38,25 @@
         <div class="ruby-container">
             <div class="owl-carousel owl-theme" id="main-slider">
                 <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-                <div class="text-left item bg-img" data-overlay-dark="2"> 
+                <?php foreach ($SLIDER_VIDEOS as $sliderVideo) : ?>
+                    <div class="text-left item bg-img" data-overlay-dark="2"> 
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?= $sliderVideo["video_id"] ?>" data-src="https://www.youtube.com/embed/<?= $sliderVideo["video_id"] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="v-middle caption">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Video</h4>
+                                        <h1>Phoxel Studio</h1>
+                                        <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p>
+                                        <a href="#services" class="button-tersiyer">Services</a>
+                                        <a href="#portfolio" class="button-primary">Portfolio</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <!-- <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/1.jpg">
                     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/JpxsRwnRwCQ" data-src="https://www.youtube.com/embed/JpxsRwnRwCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="v-middle caption">
                         <div class="container">
@@ -45,23 +71,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/1.jpg">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/JpxsRwnRwCQ" data-src="https://www.youtube.com/embed/JpxsRwnRwCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="v-middle caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>Video</h4>
-                                    <h1>Phoxel Studio</h1>
-                                    <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p>
-                                    <a href="#services" class="button-tersiyer">Services</a>
-                                    <a href="#portfolio" class="button-primary">Portfolio</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
                 <!-- <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/2.jpg">
                     <div class="v-middle caption">
                         <div class="container">
