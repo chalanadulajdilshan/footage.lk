@@ -1,3 +1,20 @@
+<?php
+include_once "../includes/class-auto-loader.php";
+$isEdit = false;
+
+if (isset($_GET['query']) && $_GET['query'] == 'edit') {
+	if (isset($_GET['id'])) {
+		$isEdit = true;
+		$SLIDER_VIDEO = new Slider($_GET['id']);
+	}
+}
+$id = isset($SLIDER_VIDEO) ? $SLIDER_VIDEO->id : '';
+$title = isset($SLIDER_VIDEO) ? $SLIDER_VIDEO->title : '';
+$videoId = isset($SLIDER_VIDEO) ? $SLIDER_VIDEO->videoId : '';
+$isActive = isset($SLIDER_VIDEO) ? $SLIDER_VIDEO->isActive : 0;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +25,7 @@
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Xenon - Dashboard 4</title>
+	<title>Xenon - Video Slider</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -773,185 +790,128 @@
 			<!-- navogation panel start-->
 			<?php include './navigation.php' ?>
 			<!--navigation panel end -->
-			
-			<div class="row">
-			
-				<div class="col-sm-3">
-					
-					<div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
-						<div class="xe-icon">
-							<i class="linecons-cloud"></i>
-						</div>
-						<div class="xe-label">
-							<strong class="num">0.0%</strong>
-							<span>Server uptime</span>
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class="col-sm-3">
-					
-					<div class="xe-widget xe-counter xe-counter-blue" data-count=".num" data-from="1" data-to="117" data-suffix="k" data-duration="3" data-easing="false">
-						<div class="xe-icon">
-							<i class="linecons-user"></i>
-						</div>
-						<div class="xe-label">
-							<strong class="num">1k</strong>
-							<span>Users Total</span>
-						</div>
-					</div>
-				
-				</div>
-				
-				<div class="col-sm-3">
-					
-					<div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="1000" data-to="2470" data-duration="4" data-easing="true">
-						<div class="xe-icon">
-							<i class="linecons-camera"></i>
-						</div>
-						<div class="xe-label">
-							<strong class="num">1000</strong>
-							<span>New Daily Photos</span>
-						</div>
-					</div>
-				
-				</div>
-				
-				<div class="col-sm-3">
-					
-					<div class="xe-widget xe-counter xe-counter-red"  data-count=".num" data-from="0" data-to="57" data-prefix="-," data-suffix="%" data-duration="5" data-easing="true" data-delay="1">
-						<div class="xe-icon">
-							<i class="linecons-lightbulb"></i>
-						</div>
-						<div class="xe-label">
-							<strong class="num">-,0%</strong>
-							<span>Exchange Commission</span>
-						</div>
-					</div>
-				
-				</div>
-				
-				<div class="col-sm-3">
-				
-					<div class="xe-widget xe-counter-block"  data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
-						<div class="xe-upper">
-							
-							<div class="xe-icon">
-								<i class="linecons-cloud"></i>
-							</div>
-							<div class="xe-label">
-								<strong class="num">0.0%</strong>
-								<span>Server uptime</span>
-							</div>
-							
-						</div>
-						<div class="xe-lower">
-							<div class="border"></div>
-							
-							<span>Result</span>
-							<strong>78% Increase</strong>
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class="col-sm-3">
-				
-					<div class="xe-widget xe-counter-block xe-counter-block-purple"  data-count=".num" data-from="0" data-to="512" data-duration="3">
-						<div class="xe-upper">
-							
-							<div class="xe-icon">
-								<i class="linecons-camera"></i>
-							</div>
-							<div class="xe-label">
-								<strong class="num">0</strong>
-								<span>Photos Taken</span>
-							</div>
-							
-						</div>
-						<div class="xe-lower">
-							<div class="border"></div>
-							
-							<span>Increase</span>
-							<strong>512 more photos</strong>
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class="col-sm-3">
-				
-					<div class="xe-widget xe-counter-block xe-counter-block-blue"  data-suffix="k" data-count=".num" data-from="0" data-to="310" data-duration="4" data-easing="false">
-						<div class="xe-upper">
-							
-							<div class="xe-icon">
-								<i class="linecons-user"></i>
-							</div>
-							<div class="xe-label">
-								<strong class="num">0k</strong>
-								<span>Daily Visits</span>
-							</div>
-							
-						</div>
-						<div class="xe-lower">
-							<div class="border"></div>
-							
-							<span>Bounce Rate</span>
-							<strong>51.55%</strong>
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class="col-sm-3">
-				
-					<div class="xe-widget xe-counter-block xe-counter-block-orange">
-						<div class="xe-upper">
-							
-							<div class="xe-icon">
-								<i class="fa-life-ring"></i>
-							</div>
-							<div class="xe-label">
-								<strong class="num">24/7</strong>
-								<span>Live Support</span>
-							</div>
-							
-						</div>
-						<div class="xe-lower">
-							<div class="border"></div>
-							
-							<span>Tickets Opened</span>
-							<strong  data-count="this" data-from="0" data-to="14215" data-duration="2">0</strong>
-						</div>
-					</div>					
-				</div>				
-			</div>
 
-			<footer class="main-footer sticky footer-type-1">				
-				<div class="footer-inner">				
+			<section id="videoSliderSection">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default" id="SliderVideosForm">
+                            <div class="panel-heading">
+								<?php if ($isEdit) : ?>
+                                	<h3 class="panel-title">Update Slider Videos</h3>
+								<?php else : ?>
+                                	<h3 class="panel-title">Add Slider Videos</h3>
+								<?php endif; ?>
+                                <div class="panel-options">
+                                    <a href="#" data-toggle="panel">
+                                        <span class="collapse-icon">&ndash;</span>
+                                        <span class="expand-icon">+</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form action="./ajax/php/video-slider.php" method="POST" role="form" class="form-inline" id="videoSliderForm" >
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?= $title ?>"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="video_id" id="videoId" placeholder="Video Id" value="<?= $videoId ?>"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="cbr-inline form-control" id="isActiveBox">
+                                            <input type="checkbox" class="cbr" name="isActive" id="isActive" value="1" <?php echo ($isActive == 1 ? 'checked' : '');?> />
+                                            Active
+                                        </label>
+                                    </div>
+                                    <div class="form-group pull-right">
+										<input type="hidden" name="id" value="<?= $id ?>"/>
+										<?php if ($isEdit) : ?>
+                                        	<button type="submit" id="updateVideo" name="updateVideo" class="btn btn-secondary btn-single">Update Video</button>
+										<?php else : ?>
+                                        	<button type="submit" id="addVideo" name="addVideo" class="btn btn-secondary btn-single">Add Video</button>
+										<?php endif; ?>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Slider Videos</h3>
+                                <div class="panel-options">
+                                    <a href="#" data-toggle="panel">
+                                        <span class="collapse-icon">&ndash;</span>
+                                        <span class="expand-icon">+</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function($) {
+                                        $.ajax({
+                                            url: '../admin/ajax/php/video-slider.php?query=getAll',
+                                            type: 'GET',
+                                            success: function (data) {
+												let resData = $.parseJSON(data);
+                                            $('#videoSlidersTable').dataTable({
+                                                // dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                                                data: resData,
+                                                columns: [
+                                                { "data": "id" },
+                                                { "data": "title" },
+                                                { "data": "video_id" },
+                                                { "data": "is_active" },
+												{ "targets": 4,
+													"data": 'id',
+													"render": function (data, type, row, meta) {
+														return "<a href='./video-slider.php?query=edit&id=" + data + "' class='btn btn-secondary btn-sm btn-icon icon-left'>Edit</a>" +
+													"<button id='deleteVideo' onclick='deleteVideo(" + data + ")' class='btn btn-danger btn-sm btn-icon icon-left'>Delete</button>"
+													}}
+                                                ],
+                                                responsive: true,
+                                            });
+                                            }
+                                        });
+                                    });
+                                </script>
+                                
+                                <table class="table table-bordered table-striped" id="videoSlidersTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Title</th>
+                                            <th>Video Id</th>
+                                            <th>Is Active</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="middle-align"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+			<footer class="main-footer sticky footer-type-1">
+				<div class="footer-inner">
 					<div class="footer-text">
 						&copy; 2014 
 						<strong>Xenon</strong> 
 						theme by <a href="http://laborator.co" target="_blank">Laborator</a> - <a href="http://themeforest.net/item/xenon-bootstrap-admin-theme/9059661?ref=Laborator" target="_blank">Purchase for only <strong>23$</strong></a>
 					</div>
-					
-					
 					<div class="go-up">
-					
 						<a href="#" rel="go-top">
 							<i class="fa-angle-up"></i>
 						</a>
-						
 					</div>
-					
 				</div>
-				
 			</footer>
 		</div> 
 	</div> 
 
 
+	<!-- Imported styles on this page -->
+	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
 
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/css/fonts/meteocons/css/meteocons.css">
@@ -963,6 +923,13 @@
 	<script src="assets/js/joinable.js"></script>
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
+	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
+
+
+	<!-- Imported scripts datatables -->
+	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
+	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
 
 
 	<!-- Imported scripts on this page -->
@@ -970,9 +937,13 @@
 	<script src="assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
 	<script src="assets/js/xenon-widgets.js"></script>
 
+	  <!-- SweetAlert2 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
+
+    <script type="text/javascript" src="./ajax/js/video-slider.js"></script>
 
 </body>
 </html>

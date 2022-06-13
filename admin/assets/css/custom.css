@@ -4,8 +4,11 @@
  *
 */
 
-body {	
-}
+body {}
 
-a {
+a {}
+
+#videoSliderSection .panel-body .form-group label {
+    margin-bottom: 0 !important;
+    cursor: pointer;
 }
