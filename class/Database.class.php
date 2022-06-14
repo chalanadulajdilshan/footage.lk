@@ -6,7 +6,7 @@ class Database
     private $serverName = "localhost";
     private $dbUserName = "root";
     private $dbPassword = "";
-    private $dbName = "footage_db";
+    private $dbName = "footage.lk";
 
     protected function connect() 
     {
