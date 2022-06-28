@@ -1,8 +1,7 @@
 <?php
-include_once "./includes/class-auto-loader.php";
+include_once "./class/include.php";
 
-$SLIDER_VIDEO = new Slider(null);
-$SLIDER_VIDEOS = $SLIDER_VIDEO->getActiveSlides();
+ 
 
 ?>
 
@@ -13,7 +12,7 @@ $SLIDER_VIDEOS = $SLIDER_VIDEO->getActiveSlides();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>PHOXEL</title>
+    <title>Footage.lk</title>
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap">
     <link rel="stylesheet" href="css/plugins.css" />
@@ -36,57 +35,27 @@ $SLIDER_VIDEOS = $SLIDER_VIDEO->getActiveSlides();
     <!-- Slider -->
     <header id="slider-area" class="header slider-fade">
         <div class="ruby-container">
-            <div class="owl-carousel owl-theme" id="main-slider">
-                <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-                <?php foreach ($SLIDER_VIDEOS as $sliderVideo) : ?>
-                    <div class="text-left item bg-img" data-overlay-dark="2"> 
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?= $sliderVideo["video_id"] ?>" data-src="https://www.youtube.com/embed/<?= $sliderVideo["video_id"] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="owl-carousel owl-theme">
+                <?php
+
+                $SLIDER =  new Slider(NULL);
+                foreach ($SLIDER->all() as $slider) {
+                ?>
+                    <div class="text-left item bg-img" data-overlay-dark="2" data-background="upload/slider/<?php echo $slider['image_name'] ?>">
                         <div class="v-middle caption">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4>Video</h4>
-                                        <h1>Phoxel Studio</h1>
-                                        <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p>
-                                        <a href="#services" class="button-tersiyer">Services</a>
-                                        <a href="#portfolio" class="button-primary">Portfolio</a>
+                                        <h4>Welcome to my</h4>
+                                        <h1><?php echo $slider['title'] ?></h1>
+                                        <p><?php echo $slider['short_description'] ?></p> <a href="#" class="button-primary">My works</a> <a href="#" class="button-tersiyer">Contact me</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
-                <!-- <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/1.jpg">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/JpxsRwnRwCQ" data-src="https://www.youtube.com/embed/JpxsRwnRwCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="v-middle caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>Video</h4>
-                                    <h1>Phoxel Studio</h1>
-                                    <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold.</p>
-                                    <a href="#services" class="button-tersiyer">Services</a>
-                                    <a href="#portfolio" class="button-primary">Portfolio</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="text-left item bg-img" data-overlay-dark="2" data-background="img/slider/2.jpg">
-                    <div class="v-middle caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>Hello there !</h4>
-                                    <h1>I'm Martin Dan</h1>
-                                    <p>I am professional photographer based on New York, creating dreamscapes with black, white and shades in-between.</p>
-                                    <a href="#services" class="button-tersiyer">Services</a>
-                                    <a href="#portfolio" class="button-primary">Portfolio</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                <?php } ?>
+
             </div>
         </div>
     </header>
@@ -145,37 +114,37 @@ $SLIDER_VIDEOS = $SLIDER_VIDEO->getActiveSlides();
             <div class="row">
                 <div class="col-md-4 border-1">
                     <div class="item"> <img src="img/icons/icon-1.svg" alt="">
-                        <h5>Photography</h5>
+                        <h5>Photography </h5>
                         <p>Photography bibendum eros amet vacun the vulputate in the vitae miss.</p>
                     </div>
                 </div>
                 <div class="col-md-4 border-2">
                     <div class="item"> <img src="img/icons/icon-2.svg" alt="">
-                        <h5>Videography</h5>
+                        <h5>Videography </h5>
                         <p>Videography bibendum eros amen vacun the vulputate in the vitae miss.</p>
                     </div>
                 </div>
                 <div class="col-md-4 border-3">
                     <div class="item"> <img src="img/icons/icon-3.svg" alt="">
-                        <h5>Photo Retouching</h5>
+                        <h5>Corporate & Documentary</h5>
                         <p>Photo Retouching bibenum eros amen vacun the vulputate the vitae miss.</p>
                     </div>
                 </div>
                 <div class="col-md-4 border-4">
                     <div class="item"> <img src="img/icons/icon-4.svg" alt="">
-                        <h5>Aerial Photography</h5>
+                        <h5>Drone footage Selling </h5>
                         <p>Aerial Photography bibendum eros amen vacun the vulputate in the miss.</p>
                     </div>
                 </div>
                 <div class="col-md-4 border-5">
                     <div class="item"> <img src="img/icons/icon-5.svg" alt="">
-                        <h5>Lightning Setup</h5>
+                        <h5>Aerial Photography</h5>
                         <p>Lightning Setup bibendum eros amen vacus duru in the vitae miss.</p>
                     </div>
                 </div>
                 <div class="col-md-4 border-6">
                     <div class="item"> <img src="img/icons/icon-6.svg" alt="">
-                        <h5>Video Color Grading</h5>
+                        <h5>Video Editing </h5>
                         <p>Video Color Grading bibendum amen vacus the vulputate in the vitae.</p>
                     </div>
                 </div>
@@ -191,18 +160,7 @@ $SLIDER_VIDEOS = $SLIDER_VIDEO->getActiveSlides();
                     <hr class="border-2">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 text-left">
-                    <ul class="gallery-filter">
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".personal">Personal</li>
-                        <li data-filter=".wedding">Wedding</li>
-                        <li data-filter=".event">Event</li>
-                        <li data-filter=".fashion">Fashion</li>
-                        <li data-filter=".product">Product</li>
-                    </ul>
-                </div>
-            </div>
+
             <div class="row gallery-items">
                 <div class="masonry-items">
                     <div class="col-md-4 gallery-masonry-wrapper single-item wedding">
