@@ -9,7 +9,7 @@
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Xenon - Data Tables</title>
+	<title>Services - Sourcecode.lk</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -27,138 +27,24 @@
 
 </head>
 
-<body class="page-body">
-
-	<div class="settings-pane">
-
-		<a href="#" data-toggle="settings-pane" data-animate="true">
-			&times;
-		</a>
-
-		<div class="settings-pane-inner">
-
-			<div class="row">
-
-				<div class="col-md-4">
-
-					<div class="user-info">
-
-						<div class="user-image">
-							<a href="extra-profile.html">
-								<img src="assets/images/user-2.png" class="img-responsive img-circle" />
-							</a>
-						</div>
-
-						<div class="user-details">
-
-							<h3>
-								<a href="extra-profile.html">John Smith</a>
-
-								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-								<span class="user-status is-online"></span>
-							</h3>
-
-							<p class="user-title">Web Developer</p>
-
-							<div class="user-links">
-								<a href="extra-profile.html" class="btn btn-primary">Edit Profile</a>
-								<a href="extra-profile.html" class="btn btn-success">Upgrade</a>
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="col-md-8 link-blocks-env">
-
-					<div class="links-block left-sep">
-						<h4>
-							<span>Notifications</span>
-						</h4>
-
-						<ul class="list-unstyled">
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-								<label for="sp-chk1">Messages</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-								<label for="sp-chk2">Events</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-								<label for="sp-chk3">Updates</label>
-							</li>
-							<li>
-								<input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-								<label for="sp-chk4">Server Uptime</label>
-							</li>
-						</ul>
-					</div>
-
-					<div class="links-block left-sep">
-						<h4>
-							<a href="#">
-								<span>Help Desk</span>
-							</a>
-						</h4>
-
-						<ul class="list-unstyled">
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Support Center
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Submit a Ticket
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Domains Protocol
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa-angle-right"></i>
-									Terms of Service
-								</a>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
+<body class="page-body"> 
 
 	<div class="page-container">
-		<!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 		<!-- navogation panel start-->
 		<?php include './components/navigation.php' ?>
 		<!-- navogation panel start-->
 
 		<div class="main-content">
 
-			<!-- Header panel start-->
+			<!-- Header start-->
 			<?php include './components/header.php' ?>
 			<!--Header panel end -->
-
 
 			<div class="page-title">
 
 				<div class="title-env">
-					<h1 class="title">DataTable</h1>
-					<p class="description">Dynamic table variants with pagination and other controls</p>
+					<h1 class="title">Manage Services</h1>
+					<p class="description">You can manage all services in this panel</p>
 				</div>
 
 				<div class="breadcrumb-env">
@@ -169,11 +55,11 @@
 						</li>
 						<li>
 
-							<a href="tables-basic.html">Tables</a>
+							<a href="forms-native.html">Forms</a>
 						</li>
 						<li class="active">
 
-							<strong>Data Tables</strong>
+							<strong>Native Elements</strong>
 						</li>
 					</ol>
 
@@ -181,11 +67,63 @@
 
 			</div>
 
+			<div class="row">
+				<div class="col-sm-12">
 
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Create Services</h3>
+
+						</div>
+						<div class="panel-body">
+
+							<form role="form" class="form-horizontal" role="form">
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-1">Title</label>
+
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="field-1" placeholder="Enter the title">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-2">Icion Code</label>
+
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="field-2" placeholder="Enter the icion code">
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Short Description</label>
+
+									<div class="col-sm-10">
+										<input type="text" class="form-control" placeholder="Enter the Short Description">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-10"></div>
+										<div class="col-sm-2">
+											<button type="submit" id="create" name="create" class="btn btn-secondary btn-single">Create</button>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					</form>
+
+				</div>
+
+
+			</div>
 			<!-- Basic Setup -->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Basic Setup</h3>
+					<h3 class="panel-title">Manage Services</h3>
 
 					<div class="panel-options">
 						<a href="#" data-toggle="panel">
@@ -260,19 +198,14 @@
 
 				</div>
 			</div>
-
-
-
-
-			<?php include './components/footer.php' ?>
 		</div>
-
-
-
-
 	</div>
 
 
+	<?php include './components/footer.php' ?>
+
+	</div>
+	</div>
 
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
@@ -296,6 +229,7 @@
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
 
+	<script type="text/javascript" src="./ajax/js/services.js"></script>
 </body>
 
 </html>

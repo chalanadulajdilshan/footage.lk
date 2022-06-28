@@ -49,12 +49,29 @@
                 </a>
             </li>
             <li>
-                <a href="../video-slider.php">
+                <a href="./slider.php">
                     <i class="linecons-desktop"></i>
-                    <span class="title">Main Slider</span>
+                    <span class="title">Slider</span>
                 </a>
             </li>
-
+            <li>
+                <a href="./services.php">
+                    <i class="linecons-desktop"></i>
+                    <span class="title">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="./video-slider.php">
+                    <i class="linecons-desktop"></i>
+                    <span class="title">Portfolio</span>
+                </a>
+            </li>
+            <li>
+                <a href="./video-slider.php">
+                    <i class="linecons-desktop"></i>
+                    <span class="title">Customer Feedback</span>
+                </a>
+            </li>
         </ul>
 
     </div>
