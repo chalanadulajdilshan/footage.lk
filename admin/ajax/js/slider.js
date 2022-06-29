@@ -88,14 +88,14 @@ jQuery(document).ready(function() {
                 timer: 2000,
                 showConfirmButton: false
             });
-        } else if (!$('#image_name').val() || $('#image_name').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter slider image",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
-            });
+            // } else if (!$('#image_name').val() || $('#image_name').val().length === 0) {
+            //     swal({
+            //         title: "Error!",
+            //         text: "Please enter slider image",
+            //         type: 'error',
+            //         timer: 2000,
+            //         showConfirmButton: false
+            //     });
         } else if (!$('#short_description').val() || $('#short_description').val().length === 0) {
             swal({
                 title: "Error!",
@@ -134,7 +134,7 @@ jQuery(document).ready(function() {
                             showConfirmButton: false
                         });
                         window.setTimeout(function() {
-                            window.location.reload()
+                            window.location.reload();
                         }, 2000);
 
                     } else if (result.status === 'error') {

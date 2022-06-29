@@ -7,31 +7,35 @@
  */
 
 /**
- * Description of portfolio
+ * Description of comment
  *
  * @author TOSHIBA
  */
-class Portfolio
+class Comment
 {
 
     public $id;
-    public $title; 
+    public $name;
+    public $position;
     public $image_name;
+    public $comment;
     public $queue;
 
     public function __construct($id)
     {
         if ($id) {
 
-            $query = "SELECT `id`,`title`,`image_name`,`queue` FROM `portfolio` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`position`,`image_name`,`comment`,`queue` FROM `comment` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysqli_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->title = $result['title']; 
+            $this->name = $result['name'];
+            $this->position = $result['position'];
             $this->image_name = $result['image_name'];
+            $this->comment = $result['comment'];
             $this->queue = $result['queue'];
 
             return $this;
@@ -41,9 +45,11 @@ class Portfolio
     public function create()
     {
 
-        $query = "INSERT INTO `portfolio` (`title`,`image_name` ) VALUES  ('"
-            . $this->title . "','" 
-            . $this->image_name . "')";
+        $query = "INSERT INTO `comment` (`name`,`image_name`,`position`,`comment`) VALUES  ('"
+            . $this->name . "','"
+            . $this->image_name . "', '"
+            . $this->position . "', '"
+            . $this->comment . "')";
 
         $db = new Database();
 
@@ -59,7 +65,7 @@ class Portfolio
     public function all()
     {
 
-        $query = "SELECT * FROM `portfolio` ORDER BY queue ASC";
+        $query = "SELECT * FROM `comment` ORDER BY queue ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -74,8 +80,10 @@ class Portfolio
     public function update()
     {
 
-        $query = "UPDATE  `portfolio` SET "
-            . "`title` ='" . $this->title . "', " 
+        $query = "UPDATE  `comment` SET "
+            . "`name` ='" . $this->name . "', "
+            . "`position` ='" . $this->position . "', "
+            . "`comment` ='" . $this->comment . "', "
             . "`image_name` ='" . $this->image_name . "' "
             . "WHERE `id` = '" . $this->id . "'";
 
@@ -94,10 +102,10 @@ class Portfolio
     public function delete()
     {
 
-        $query = 'DELETE FROM `portfolio` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `comment` WHERE id="' . $this->id . '"';
         $HELP = new Helper();
-        
-        unlink($HELP->getSitePath() . "upload/portfolio/" . $this->image_name);
+
+        unlink($HELP->getSitePath() . "upload/comment/" . $this->image_name);
 
         $db = new Database();
 
@@ -106,7 +114,7 @@ class Portfolio
 
     public function arrange($key, $img)
     {
-        $query = "UPDATE `portfolio` SET `queue` = '" . $key . "'  WHERE id = '" . $img . "'";
+        $query = "UPDATE `comment` SET `queue` = '" . $key . "'  WHERE id = '" . $img . "'";
         $db = new Database();
         $result = $db->readQuery($query);
         return $result;

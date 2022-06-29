@@ -7,32 +7,15 @@
             <!-- logo -->
             <div class="logo">
                 <a href="dashboard-1.html" class="logo-expanded">
-                    <img src="assets/images/logo@2x.png" width="80" alt="" />
+                    <img src="assets/images/logo.png" style="width:100%"  alt="" />
                 </a>
 
                 <a href="dashboard-1.html" class="logo-collapsed">
-                    <img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
+                    <img src="assets/images/logo.png"  style="width:100%" alt="" />
                 </a>
             </div>
 
-            <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
-            <div class="mobile-menu-toggle visible-xs">
-                <a href="#" data-toggle="user-info-menu">
-                    <i class="fa-bell-o"></i>
-                    <span class="badge badge-success">7</span>
-                </a>
-
-                <a href="#" data-toggle="mobile-menu">
-                    <i class="fa-bars"></i>
-                </a>
-            </div>
-
-            <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-            <div class="settings-icon">
-                <a href="#" data-toggle="settings-pane" data-animate="true">
-                    <i class="linecons-cog"></i>
-                </a>
-            </div>
+             
 
 
         </header>
@@ -49,25 +32,25 @@
                 </a>
             </li>
             <li>
-                <a href="./slider.php">
+                <a href="./manage-slider.php">
                     <i class="linecons-desktop"></i>
                     <span class="title">Slider</span>
                 </a>
             </li>
             <li>
-                <a href="./services.php">
+                <a href="./manage-services.php">
                     <i class="linecons-desktop"></i>
                     <span class="title">Services</span>
                 </a>
             </li>
             <li>
-                <a href="./video-slider.php">
+                <a href="./manage-portfolio.php">
                     <i class="linecons-desktop"></i>
                     <span class="title">Portfolio</span>
                 </a>
             </li>
             <li>
-                <a href="./video-slider.php">
+                <a href="./manage-customer-feedback.php">
                     <i class="linecons-desktop"></i>
                     <span class="title">Customer Feedback</span>
                 </a>

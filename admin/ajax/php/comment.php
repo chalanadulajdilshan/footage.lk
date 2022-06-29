@@ -4,12 +4,15 @@ include '../../../class/include.php';
 
 //create slider
 if (isset($_POST['create'])) {
-    $SLIDER = new Slider(NULL);
+    $COMMENT = new Comment(NULL);
 
 
-    $SLIDER->title = $_POST['title'];
+    $COMMENT->name = $_POST['name'];
+    $COMMENT->position = $_POST['position'];
+    $COMMENT->comment = $_POST['comment'];
+    
 
-    $dir_dest = '../../../upload/slider/';
+    $dir_dest = '../../../upload/comment/';
 
     $handle = new Upload($_FILES['image_name']);
 
@@ -34,10 +37,10 @@ if (isset($_POST['create'])) {
         }
     }
 
-    $SLIDER->image_name = $imgName;
+    $COMMENT->image_name = $imgName;
 
 
-    $res = $SLIDER->create();
+    $res = $COMMENT->create();
 
     if ($res) {
         $result = [
@@ -57,7 +60,7 @@ if (isset($_POST['create'])) {
 //Update slider
 if (isset($_POST['update'])) {
 
-    $dir_dest = '../../../upload/slider/';
+    $dir_dest = '../../../upload/comment/';
 
     $handle = new Upload($_FILES['image_name']);
     $imgName = null;
@@ -80,12 +83,13 @@ if (isset($_POST['update'])) {
         }
     }
 
-    $SLIDER = new Slider($_POST['id']);
-    $SLIDER->image_name = $_POST['oldImageName'];
-    $SLIDER->title = $_POST['title'];
-    $SLIDER->short_description = $_POST['short_description'];
+    $COMMENT = new Comment($_POST['id']);
+    $COMMENT->image_name = $_POST['oldImageName'];
+    $COMMENT->name = $_POST['name'];
+    $COMMENT->position = $_POST['position'];
+    $COMMENT->comment = $_POST['comment'];
 
-    $result = $SLIDER->update();
+    $result = $COMMENT->update();
 
     if ($result->id) {
         $result = [
@@ -107,8 +111,8 @@ if (isset($_POST['arrange'])) {
     foreach ($_POST['sort'] as $key => $img) {
         $key = $key + 1;
 
-        $SLIDER = new Slider(NULL);
-        $SLIDER =   $SLIDER->arrange($key, $img);
+        $COMMENT = new Slider(NULL);
+        $COMMENT =   $COMMENT->arrange($key, $img);
 
         header('Location:../../arrange-slider.php?message=9');
     }

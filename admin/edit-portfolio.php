@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+include '../class/include.php';
+include './auth.php';
+
+
+$id = '';
+$id = $_GET['id'];
+$PORTFOLIO = new Portfolio($id);
+?>
 <html lang="en">
 
 <head>
@@ -9,7 +18,7 @@
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Customer Feedback - Sourcecode.lk</title>
+	<title>Edit Portfolio - Sourcecode.lk</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -20,14 +29,15 @@
 	<link rel="stylesheet" href="assets/css/xenon-components.css">
 	<link rel="stylesheet" href="assets/css/xenon-skins.css">
 	<link rel="stylesheet" href="assets/css/custom.css">
-
+	<link rel="stylesheet" href="assets/sweetalert/sweetalert.css">
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 
 
 
 </head>
 
-<body class="page-body"> 
+<body class="page-body">
+
 	<div class="page-container">
 		<!-- navogation panel start-->
 		<?php include './components/navigation.php' ?>
@@ -42,7 +52,7 @@
 			<div class="page-title">
 
 				<div class="title-env">
-					<h1 class="title">Manage Services</h1>
+					<h1 class="title">Manage Portfolio</h1>
 					<p class="description">You can manage all services in this panel</p>
 				</div>
 
@@ -54,11 +64,11 @@
 						</li>
 						<li>
 
-							<a href="forms-native.html">Forms</a>
+							<a href="forms-native.html">Portfolio</a>
 						</li>
 						<li class="active">
 
-							<strong>Native Elements</strong>
+							<strong>Manage Portfolio</strong>
 						</li>
 					</ol>
 
@@ -71,132 +81,45 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Create Services</h3>
+							<h3 class="panel-title">Create Portfolio</h3>
 
 						</div>
 						<div class="panel-body">
 
-							<form role="form" class="form-horizontal" role="form">
+							<form role="form" class="form-horizontal" role="form" id="form-data">
 
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="field-1">Title</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Enter the title">
+										<input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" value="<?php echo $PORTFOLIO->title ?>">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">Icion Code</label>
-
+									<label class="col-sm-2 control-label" for="field-2">Portfolio Image</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-2" placeholder="Enter the icion code">
-									</div>
-								</div>
-
-
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Short Description</label>
-
-									<div class="col-sm-10">
-										<input type="text" class="form-control" placeholder="Enter the Short Description">
+										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the slider image" value="<?php echo $PORTFOLIO->image_name ?>">
+										<img src="../upload/portfolio/<?php echo $PORTFOLIO->image_name ?>" width="50%" style="margin-top:10px; ;">
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-10"></div>
 										<div class="col-sm-2">
-											<button type="submit" id="create" name="create" class="btn btn-secondary btn-single">Create</button>
+											<button type="submit" id="update" name="create" class="btn btn-secondary btn-single">Update</button>
+											<input type="hidden" name="update">
+											<input type="hidden" name="id" value="<?php echo $id ?>">
+											<input type="hidden" name="oldImageName" value="<?php echo $PORTFOLIO->image_name ?>">
 										</div>
 									</div>
 								</div>
+							</form>
 						</div>
 					</div>
-					</form>
-
-				</div>
-
-
-			</div>
-			<!-- Basic Setup -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Manage Services</h3>
-
-					<div class="panel-options">
-						<a href="#" data-toggle="panel">
-							<span class="collapse-icon">&ndash;</span>
-							<span class="expand-icon">+</span>
-						</a>
-						<a href="#" data-toggle="remove">
-							&times;
-						</a>
-					</div>
-				</div>
-				<div class="panel-body">
-
-					<script type="text/javascript">
-						jQuery(document).ready(function($) {
-							$("#example-1").dataTable({
-								aLengthMenu: [
-									[10, 25, 50, 100, -1],
-									[10, 25, 50, 100, "All"]
-								]
-							});
-						});
-					</script>
-
-					<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
-							</tr>
-						</thead>
-
-						<tfoot>
-							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
-							</tr>
-						</tfoot>
-
-						<tbody>
-							<tr>
-								<td>Tiger Nixon</td>
-								<td>System Architect</td>
-								<td>Edinburgh</td>
-								<td>61</td>
-								<td>2011/04/25</td>
-								<td>
-									<a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
-										Edit
-									</a>
-
-									<a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
-										Delete
-									</a>
-
-									<a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-										Profile
-									</a>
-								</td>
-							</tr>
-
-						</tbody>
-					</table>
-
 				</div>
 			</div>
+
 		</div>
 	</div>
 
@@ -217,7 +140,7 @@
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
-
+	<script src="assets/sweetalert/sweetalert.min.js"></script>
 
 	<!-- Imported scripts on this page -->
 	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
@@ -228,7 +151,7 @@
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
 
-	<script type="text/javascript" src="./ajax/js/services.js"></script>
+	<script type="text/javascript" src="./ajax/js/portfolio.js"></script>
 </body>
 
 </html>

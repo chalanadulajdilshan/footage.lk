@@ -3,11 +3,6 @@
 include '../class/include.php';
 include './auth.php';
 
-
-$id = '';
-$id = $_GET["id"];
-$SLIDER = new Slider($id);
-
 ?>
 <html lang="en">
 
@@ -53,7 +48,7 @@ $SLIDER = new Slider($id);
 			<div class="page-title">
 
 				<div class="title-env">
-					<h1 class="title">Edit Slider</h1>
+					<h1 class="title">Manage Slider</h1>
 					<p class="description">You can manage all services in this panel</p>
 				</div>
 
@@ -69,7 +64,7 @@ $SLIDER = new Slider($id);
 						</li>
 						<li class="active">
 
-							<strong>Edit Slider</strong>
+							<strong>Manage Slider</strong>
 						</li>
 					</ol>
 
@@ -82,7 +77,7 @@ $SLIDER = new Slider($id);
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Edit Slider</h3>
+							<h3 class="panel-title">Create Slider</h3>
 
 						</div>
 						<div class="panel-body">
@@ -93,34 +88,31 @@ $SLIDER = new Slider($id);
 									<label class="col-sm-2 control-label" for="field-1">Title</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" value="<?php echo $SLIDER->title ?>">
+										<input type="text" class="form-control" id="title" name="title" placeholder="Enter the title">
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="field-2">Slider Image</label>
-									<div class="col-sm-10">
-										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the slider image" value="<?php echo $SLIDER->image_name ?>">
-										<img src="../upload/slider/<?php echo $SLIDER->image_name ?>" width="50%" style="margin-top:10px; ;">
-									</div>
 
+									<div class="col-sm-10">
+										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the slider image">
+									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Short Description</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="short_description" id="short_description" placeholder="Enter the Short Description" value="<?php echo $SLIDER->short_description ?>">
+										<input type="text" class="form-control" name="short_description" id="short_description" placeholder="Enter the Short Description">
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-10"></div>
 										<div class="col-sm-2">
-											<button type="submit" id="update"   class="btn btn-secondary btn-single">Update</button>
-											<input type="hidden" name="update">
-											<input type="hidden" name="id" value="<?php echo $id ?>">
-											<input type="hidden" name="oldImageName" value="<?php echo $SLIDER->image_name ?>">
+											<button type="submit" id="create" name="create" class="btn btn-secondary btn-single">Create</button>
+											<input type="hidden" name="create">
 										</div>
 									</div>
 								</div>
@@ -128,7 +120,50 @@ $SLIDER = new Slider($id);
 						</div>
 					</div>
 				</div>
+			</div> 
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Manage Slider</h3>
+						</div>
+						<div class="panel-body">
+							<!-- Album Images -->
+							<div class="album-images row">
+								<?php
+								$SLIDER =  new Slider(NULL);
+								foreach ($SLIDER->all() as $slider) {
+								?>
+									<div class="col-md-3 col-sm-4 col-xs-6" style="margin-bottom: 10px;" id="div<?php echo $slider['id'] ?>">
+										<div class="album-image">
+											<a href="#">
+												<img src="../upload/slider/<?php echo $slider['image_name'] ?>" class="img-responsive" />
+											</a>
+
+											<h6 href="#" class="name">
+												<em><?php echo $slider['title'] ?></em>
+											</h6>
+
+											<div class="image-options">
+												<a href="edit-slider.php?id=<?php echo $slider['id'] ?>" style="color:white; padding: 4px;background-color: green;border-radius: 2px; "><i class="fa-pencil"></i></a> |
+												<a href="#" class="delete-slider" data-id="<?php echo $slider['id'] ?>" style="color:white; padding: 4px;background-color: red;border-radius: 2px;"><i class="fa-trash"></i></a>
+											</div>
+
+
+										</div>
+									</div>
+								<?php } ?>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+
+
+
 		</div>
 	</div>
 	</div>
@@ -143,6 +178,7 @@ $SLIDER = new Slider($id);
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
 
 	<script src="ajax/js/slider.js"></script>
+	<script src="delete/js/slider.js"></script>
 
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>

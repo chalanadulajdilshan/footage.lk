@@ -2,14 +2,14 @@
 
 include '../../../class/include.php';
 
-//create slider
+//create PORTFOLIO
 if (isset($_POST['create'])) {
-    $SLIDER = new Slider(NULL);
+    $PORTFOLIO = new Portfolio(NULL);
 
 
-    $SLIDER->title = $_POST['title'];
+    $PORTFOLIO->title = $_POST['title'];
 
-    $dir_dest = '../../../upload/slider/';
+    $dir_dest = '../../../upload/portfolio/';
 
     $handle = new Upload($_FILES['image_name']);
 
@@ -34,10 +34,10 @@ if (isset($_POST['create'])) {
         }
     }
 
-    $SLIDER->image_name = $imgName;
+    $PORTFOLIO->image_name = $imgName;
 
 
-    $res = $SLIDER->create();
+    $res = $PORTFOLIO->create();
 
     if ($res) {
         $result = [
@@ -54,10 +54,10 @@ if (isset($_POST['create'])) {
     }
 }
 
-//Update slider
+//Update PORTFOLIO
 if (isset($_POST['update'])) {
 
-    $dir_dest = '../../../upload/slider/';
+    $dir_dest = '../../../upload/portfolio/';
 
     $handle = new Upload($_FILES['image_name']);
     $imgName = null;
@@ -80,11 +80,11 @@ if (isset($_POST['update'])) {
         }
     }
 
-    $SLIDER = new Slider($_POST['id']);
-    $SLIDER->image_name = $_POST['oldImageName'];
-    $SLIDER->title = $_POST['title'];
+    $PORTFOLIO = new PORTFOLIO($_POST['id']);
+    $PORTFOLIO->image_name = $_POST['oldImageName'];
+    $PORTFOLIO->title = $_POST['title'];
 
-    $result = $SLIDER->update();
+    $result = $PORTFOLIO->update();
 
     if ($result->id) {
         $result = [
@@ -101,14 +101,14 @@ if (isset($_POST['update'])) {
     }
 }
 
-//Arange slider
+//Arange PORTFOLIO
 if (isset($_POST['arrange'])) {
     foreach ($_POST['sort'] as $key => $img) {
         $key = $key + 1;
 
-        $SLIDER = new Slider(NULL);
-        $SLIDER =   $SLIDER->arrange($key, $img);
+        $PORTFOLIO = new PORTFOLIO(NULL);
+        $PORTFOLIO =   $PORTFOLIO->arrange($key, $img);
 
-        header('Location:../../arrange-slider.php?message=9');
+        header('Location:../../arrange-PORTFOLIO.php?message=9');
     }
 }
