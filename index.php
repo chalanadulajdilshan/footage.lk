@@ -1,7 +1,7 @@
 <?php
 include_once "./class/include.php";
 
- 
+
 
 ?>
 
@@ -163,114 +163,22 @@ include_once "./class/include.php";
 
             <div class="row gallery-items">
                 <div class="masonry-items">
-                    <div class="col-md-4 gallery-masonry-wrapper single-item wedding">
-                        <a href="img/works/w2.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/w2.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Wedding</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
+                    <?php
+                    $PORTFOLIO = new Portfolio(NULL);
+                    foreach ($PORTFOLIO->all() as $portfolio) {
+                    ?>
+                        <div class="col-md-4 gallery-masonry-wrapper single-item wedding">
+                            <a href="upload/portfolio/<?php echo $portfolio['image_name'] ?>" title="" class="gallery-masonry-item-img-link img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="upload/portfolio/<?php echo $portfolio['image_name'] ?>" class="img-fluid mx-auto d-block" alt=""> </div>
+                                    <div class="gallery-masonry-item-img"></div>
+                                    <div class="gallery-masonry-item-content">
+                                        <h4 class="gallery-masonry-item-title"><?php echo $portfolio['title'] ?></h4>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item personal">
-                        <a href="img/works/p1.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/p1.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Personal</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item event">
-                        <a href="img/works/e1.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/e1.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Event</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item personal">
-                        <a href="img/works/p2.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/p2.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Personal</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item event">
-                        <a href="img/works/e2.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/e2.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Event</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item wedding">
-                        <a href="img/works/w1.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/w1.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Wedding</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item fashion">
-                        <a href="img/works/f1.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/f1.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Fashion</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item product">
-                        <a href="img/works/p3.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/p3.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Product</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 gallery-masonry-wrapper single-item fashion">
-                        <a href="img/works/f2.jpg" title="" class="gallery-masonry-item-img-link img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img src="img/works/f2.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
-                                <div class="gallery-masonry-item-img"></div>
-                                <div class="gallery-masonry-item-content">
-                                    <div class="gallery-masonry-item-category">Fashion</div>
-                                    <h4 class="gallery-masonry-item-title">Quisue sen duru martin</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -353,7 +353,7 @@
                     </a>
                 </li>
                 <li class="last">
-                    <a href="extra-lockscreen.html">
+                    <a href="./log-out.php">
                         <i class="fa-lock"></i>
                         Logout
                     </a>

@@ -3,10 +3,9 @@
 include '../class/include.php';
 include './auth.php';
 
-
 $id = '';
 $id = $_GET["id"];
-$SLIDER = new Slider($id);
+$COMMENT = new Comment($id);
 
 ?>
 <html lang="en">
@@ -19,7 +18,7 @@ $SLIDER = new Slider($id);
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Slider - Sourcecode.lk</title>
+	<title>Comment - Sourcecode.lk</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -53,7 +52,7 @@ $SLIDER = new Slider($id);
 			<div class="page-title">
 
 				<div class="title-env">
-					<h1 class="title">Edit Slider</h1>
+					<h1 class="title">Edit Comment</h1>
 					<p class="description">You can manage all services in this panel</p>
 				</div>
 
@@ -65,11 +64,11 @@ $SLIDER = new Slider($id);
 						</li>
 						<li>
 
-							<a href="forms-native.html">Slider</a>
+							<a href="forms-native.html">Comment</a>
 						</li>
 						<li class="active">
 
-							<strong>Edit Slider</strong>
+							<strong>Edit Comment</strong>
 						</li>
 					</ol>
 
@@ -82,45 +81,53 @@ $SLIDER = new Slider($id);
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Edit Slider</h3>
+							<h3 class="panel-title">Edit Comment</h3>
 
 						</div>
 						<div class="panel-body">
 
 							<form role="form" class="form-horizontal" role="form" id="form-data">
-
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-1">Title</label>
+									<label class="col-sm-2 control-label" for="field-1">Customer Name</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" value="<?php echo $SLIDER->title ?>">
+										<input type="text" class="form-control" id="name" name="name" placeholder="Enter the name" value="<?php echo $COMMENT->name ?>">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">Slider Image</label>
+									<label class="col-sm-2 control-label" for="field-1">Position</label>
+
 									<div class="col-sm-10">
-										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the slider image" value="<?php echo $SLIDER->image_name ?>">
-										<img src="../upload/slider/<?php echo $SLIDER->image_name ?>" width="50%" style="margin-top:10px; ;">
+										<input type="text" class="form-control" id="position" name="position" placeholder="Enter Customer position" value="<?php echo $COMMENT->position ?>">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-2">Customer Image</label>
+									<div class="col-sm-10">
+										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the COMMENT image" value="<?php echo $COMMENT->image_name ?>">
+										<img src="../upload/comment/<?php echo $COMMENT->image_name ?>" width="50%" style="margin-top:10px; ;">
 									</div>
 
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Short Description</label>
+									<label class="col-sm-2 control-label" for="field-1">Comment</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="short_description" id="short_description" placeholder="Enter the Short Description" value="<?php echo $SLIDER->short_description ?>">
+										<textarea style="width:100%;" col="10" id="comment" name="comment"><?php echo $COMMENT->comment ?></textarea>
 									</div>
 								</div>
+
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-10"></div>
 										<div class="col-sm-2">
-											<button type="submit" id="update"   class="btn btn-secondary btn-single">Update</button>
+											<button type="submit" id="update" name="update" class="btn btn-secondary btn-single">Update</button>
 											<input type="hidden" name="update">
 											<input type="hidden" name="id" value="<?php echo $id ?>">
-											<input type="hidden" name="oldImageName" value="<?php echo $SLIDER->image_name ?>">
+											<input type="hidden" name="oldImageName" value="<?php echo $COMMENT->image_name ?>">
 										</div>
 									</div>
 								</div>
@@ -142,7 +149,7 @@ $SLIDER = new Slider($id);
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
 
-	<script src="ajax/js/slider.js"></script>
+	<script src="ajax/js/comment.js"></script>
 
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>

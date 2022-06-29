@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+include '../class/include.php';
+include './auth.php';
+
+?>
 <html lang="en">
 
 <head>
@@ -20,7 +25,7 @@
 	<link rel="stylesheet" href="assets/css/xenon-components.css">
 	<link rel="stylesheet" href="assets/css/xenon-skins.css">
 	<link rel="stylesheet" href="assets/css/custom.css">
-
+	<link rel="stylesheet" href="assets/sweetalert/sweetalert.css">
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 
 
@@ -89,11 +94,10 @@
 
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="field-2">Portfolio Image</label>
-
 									<div class="col-sm-10">
 										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the slider image">
 									</div>
-								</div> 
+								</div>
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-10"></div>
@@ -109,38 +113,36 @@
 				</div>
 			</div>
 
-		 
+
 			<div class="row">
 				<div class="col-sm-12">
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Manage Slider</h3>
+							<h3 class="panel-title">Manage Portfolio</h3>
 
 						</div>
 						<div class="panel-body">
 							<!-- Album Images -->
 							<div class="album-images row">
 								<?php
-								$SLIDER =  new Slider(NULL);
-								foreach ($SLIDER->all() as $slider) {
+								$PORTFOLIO =  new Portfolio(NULL);
+								foreach ($PORTFOLIO->all() as $portfolio) {
 								?>
-									<div class="col-md-3 col-sm-4 col-xs-6" style="margin-bottom: 10px;">
+									<div class="col-md-3 col-sm-4 col-xs-6" style="margin-bottom: 10px;" id="div<?php echo $portfolio['id'] ?>">
 										<div class="album-image">
 											<a href="#">
-												<img src="../upload/slider/<?php echo $slider['image_name'] ?>" class="img-responsive" />
+												<img src="../upload/portfolio/<?php echo $portfolio['image_name'] ?>" class="img-responsive" />
 											</a>
 
 											<h6 href="#" class="name">
-												<em><?php echo $slider['title'] ?></em>
+												<em><?php echo $portfolio['title'] ?></em>
 											</h6>
 
 											<div class="image-options">
-												<a href="edit-slider.php?id=<?php echo $slider['id'] ?>" style="color:white; padding: 4px;background-color: green;border-radius: 2px; "><i class="fa-pencil"></i></a> |
-												<a href="#" style="color:white; padding: 4px;background-color: red;border-radius: 2px; "><i class="fa-trash"></i></a>
+												<a href="edit-portfolio.php?id=<?php echo $portfolio['id'] ?>" style="color:white; padding: 4px;background-color: green;border-radius: 2px; "><i class="fa-pencil"></i></a> |
+												<a href="#" class="delete-portfolio" data-id="<?php echo $portfolio['id'] ?>" style="color:white; padding: 4px;background-color: red;border-radius: 2px; "><i class="fa-trash"></i></a>
 											</div>
-
-
 										</div>
 									</div>
 								<?php } ?>
@@ -171,7 +173,7 @@
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
-
+	<script src="assets/sweetalert/sweetalert.min.js"></script>
 
 	<!-- Imported scripts on this page -->
 	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
@@ -182,7 +184,8 @@
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
 
-	<script type="text/javascript" src="./ajax/js/services.js"></script>
+	<script type="text/javascript" src="./ajax/js/portfolio.js"></script>
+	<script src="delete/js/portfolio.js"></script>
 </body>
 
 </html>

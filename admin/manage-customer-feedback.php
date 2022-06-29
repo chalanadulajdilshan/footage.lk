@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 include '../class/include.php';
+include './auth.php';
+
 ?>
 <html lang="en">
 
@@ -12,7 +14,7 @@ include '../class/include.php';
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Slider - Sourcecode.lk</title>
+	<title>Manage feedback - Sourcecode.lk</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -46,7 +48,7 @@ include '../class/include.php';
 			<div class="page-title">
 
 				<div class="title-env">
-					<h1 class="title">Manage Slider</h1>
+					<h1 class="title">Manage Customer Feedback</h1>
 					<p class="description">You can manage all services in this panel</p>
 				</div>
 
@@ -58,11 +60,11 @@ include '../class/include.php';
 						</li>
 						<li>
 
-							<a href="forms-native.html">Slider</a>
+							<a href="forms-native.html">Customer Feedback</a>
 						</li>
 						<li class="active">
 
-							<strong>Manage Slider</strong>
+							<strong>Manage Customer Feedback</strong>
 						</li>
 					</ol>
 
@@ -75,7 +77,7 @@ include '../class/include.php';
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Create Slider</h3>
+							<h3 class="panel-title">Create Customer Feedback</h3>
 
 						</div>
 						<div class="panel-body">
@@ -83,28 +85,36 @@ include '../class/include.php';
 							<form role="form" class="form-horizontal" role="form" id="form-data">
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-1">Title</label>
+									<label class="col-sm-2 control-label" for="field-1">Customer Name</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="title" name="title" placeholder="Enter the title">
+										<input type="text" class="form-control" id="name" name="name" placeholder="Enter the name">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">Slider Image</label>
+									<label class="col-sm-2 control-label" for="field-1">Position</label>
 
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="position" name="position" placeholder="Enter Customer position">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-2">Customer Image</label>
 									<div class="col-sm-10">
 										<input type="file" class="form-control" id="image_name" name="image_name" placeholder="Enter the slider image">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Short Description</label>
+									<label class="col-sm-2 control-label" for="field-1">Comment</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="short_description" id="short_description" placeholder="Enter the Short Description">
+										<textarea style="width:100%;" col="10" id="comment" name="comment"></textarea>
 									</div>
 								</div>
+
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-10"></div>
@@ -126,32 +136,30 @@ include '../class/include.php';
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Manage Slider</h3>
+							<h3 class="panel-title">Manage Customer Feedback </h3>
 
 						</div>
 						<div class="panel-body">
 							<!-- Album Images -->
 							<div class="album-images row">
 								<?php
-								$SLIDER =  new Slider(NULL);
-								foreach ($SLIDER->all() as $slider) {
+								$COMMENT =  new Comment(NULL);
+								foreach ($COMMENT->all() as $comment) {
 								?>
-									<div class="col-md-3 col-sm-4 col-xs-6" style="margin-bottom: 10px;">
+									<div class="col-md-3 col-sm-4 col-xs-6" style="margin-bottom: 10px;" id="div<?php echo $comment['id'] ?>">
 										<div class="album-image">
 											<a href="#">
-												<img src="../upload/slider/<?php echo $slider['image_name'] ?>" class="img-responsive" />
+												<img src="../upload/comment/<?php echo $comment['image_name'] ?>" class="img-responsive" />
 											</a>
 
 											<h6 href="#" class="name">
-												<em><?php echo $slider['title'] ?></em>
+												<em><?php echo $comment['name'] ?></em>
 											</h6>
 
 											<div class="image-options">
-												<a href="edit-slider.php?id=<?php echo $slider['id'] ?>" style="color:white; padding: 4px;background-color: green;border-radius: 2px; "><i class="fa-pencil"></i></a> |
-												<a href="#" style="color:white; padding: 4px;background-color: red;border-radius: 2px; "><i class="fa-trash"></i></a>
+												<a href="edit-comment.php?id=<?php echo $comment['id'] ?>" style="color:white; padding: 4px;background-color: green;border-radius: 2px; "><i class="fa-pencil"></i></a> |
+												<a href="#" class="delete-comment" data-id="<?php echo $comment['id'] ?>" style="color:white; padding: 4px;background-color: red;border-radius: 2px; "><i class="fa-trash"></i></a>
 											</div>
-
-
 										</div>
 									</div>
 								<?php } ?>
@@ -162,11 +170,7 @@ include '../class/include.php';
 					</div>
 				</div>
 			</div>
-
-
-
 		</div>
-	</div>
 	</div>
 
 
@@ -178,8 +182,6 @@ include '../class/include.php';
 	<!-- Imported styles on this page -->
 	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
 
-	<script src="ajax/js/slider.js"></script>
-
 	<!-- Bottom Scripts -->
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/TweenMax.min.js"></script>
@@ -188,6 +190,7 @@ include '../class/include.php';
 	<script src="assets/js/xenon-api.js"></script>
 	<script src="assets/js/xenon-toggles.js"></script>
 	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="assets/sweetalert/sweetalert.min.js"></script>
 
 	<!-- Imported scripts on this page -->
 	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
@@ -197,10 +200,9 @@ include '../class/include.php';
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
-	<script src="assets/sweetalert/sweetalert.min.js"></script>
 
-
-
+	<script type="text/javascript" src="./ajax/js/comment.js"></script>
+	<script src="delete/js/comment.js"></script>
 </body>
 
 </html>

@@ -4,10 +4,10 @@ jQuery(document).ready(function() {
     $("#create").click(function(event) {
         event.preventDefault();
 
-        if (!$('#title').val() || $('#title').val().length === 0) {
+        if (!$('#name').val() || $('#name').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter slider title",
+                text: "Please enter customer name",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -20,7 +20,22 @@ jQuery(document).ready(function() {
                 timer: 2000,
                 showConfirmButton: false
             });
-
+        } else if (!$('#position').val() || $('#position').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter position",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        } else if (!$('#comment').val() || $('#comment').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter comment",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
         } else {
             //start preloarder
             // $('.someBlock').preloader();
@@ -29,7 +44,7 @@ jQuery(document).ready(function() {
             var formData = new FormData($("form#form-data")[0]);
 
             $.ajax({
-                url: "ajax/php/portfolio.php",
+                url: "ajax/php/comment.php",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -73,23 +88,31 @@ jQuery(document).ready(function() {
     $("#update").click(function(event) {
         event.preventDefault();
 
-        if (!$('#title').val() || $('#title').val().length === 0) {
+        if (!$('#name').val() || $('#name').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter  title",
+                text: "Please enter customer name",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
             });
-            // } else if (!$('#image_name').val() || $('#image_name').val().length === 0) {
-            //     swal({
-            //         title: "Error!",
-            //         text: "Please enter portfolio image",
-            //         type: 'error',
-            //         timer: 2000,
-            //         showConfirmButton: false
-            //     });
 
+        } else if (!$('#position').val() || $('#position').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter position",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        } else if (!$('#comment').val() || $('#comment').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter comment",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
         } else {
 
             //start preloarder
@@ -98,7 +121,7 @@ jQuery(document).ready(function() {
             var formData = new FormData($("form#form-data")[0]);
 
             $.ajax({
-                url: "ajax/php/portfolio.php",
+                url: "ajax/php/comment.php",
                 type: 'POST',
                 data: formData,
                 async: false,

@@ -9,7 +9,7 @@
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Xenon - Login</title>
+	<title>Login - sourcecode.lk</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
@@ -20,14 +20,14 @@
 	<link rel="stylesheet" href="assets/css/xenon-components.css">
 	<link rel="stylesheet" href="assets/css/xenon-skins.css">
 	<link rel="stylesheet" href="assets/css/custom.css">
+	<script src="assets/css/jquery.formValid.css"></script>
+	<link rel="stylesheet" href="assets/sweetalert/sweetalert.css">
+
+
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+
 
 
 </head>
@@ -136,8 +136,8 @@
 				<form method="post" role="form" id="login" class="login-form fade-in-effect">
 
 					<div class="login-header">
-						<a href="dashboard-1.html" class="logo">
-							<img src="assets/images/logo@2x.png" alt="" width="80" />
+						<a href="#" class="logo">
+							<img src="assets/images/logo.png" alt="" style="width:75%" />
 							<span>log in</span>
 						</a>
 
@@ -148,15 +148,16 @@
 					<div class="form-group">
 						<label class="control-label" for="username">Username</label>
 						<input type="text" class="form-control input-dark" name="username" id="username" autocomplete="off" />
+
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="passwd">Password</label>
-						<input type="password" class="form-control input-dark" name="passwd" id="passwd" autocomplete="off" />
+						<input type="password" class="form-control input-dark" name="password" id="password" autocomplete="off" />
 					</div>
 
 					<div class="form-group">
-						<button type="submit" class="btn btn-dark  btn-block text-left">
+						<button type="submit" id="login-button" class="btn btn-dark  btn-block text-left">
 							<i class="fa-lock"></i>
 							Log In
 						</button>
@@ -173,26 +174,6 @@
 					</div>
 
 				</form>
-
-				<!-- External login -->
-				<div class="external-login">
-					<a href="#" class="facebook">
-						<i class="fa-facebook"></i>
-						Facebook Login
-					</a>
-
-					<!-- 
-					<a href="<?php _hash(); ?>" class="twitter">
-						<i class="fa-twitter"></i>
-						Login with Twitter
-					</a>
-	
-					<a href="<?php _hash(); ?>" class="gplus">
-						<i class="fa-google-plus"></i>
-						Login with Google Plus
-					</a>
-					 -->
-				</div>
 
 			</div>
 
@@ -215,6 +196,9 @@
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
+	<script src="assets/sweetalert/sweetalert.min.js"></script>
+	<script src="ajax/js/login.js"></script>
+
 
 </body>
 
