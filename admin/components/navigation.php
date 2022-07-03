@@ -6,18 +6,14 @@
 
             <!-- logo -->
             <div class="logo">
-                <a href="dashboard-1.html" class="logo-expanded">
-                    <img src="assets/images/logo.png" style="width:100%"  alt="" />
+                <a href="index.php" class="logo-expanded">
+                    <img src="assets/images/logo.png" style="width:100%" alt="" />
                 </a>
 
                 <a href="dashboard-1.html" class="logo-collapsed">
-                    <img src="assets/images/logo.png"  style="width:100%" alt="" />
+                    <img src="assets/images/logo.png" style="width:100%" alt="" />
                 </a>
             </div>
-
-             
-
-
         </header>
 
 
@@ -38,20 +34,20 @@
                 </a>
             </li>
             <li>
-                <a href="./manage-services.php">
+                <a href="./manage-customers.php">
                     <i class="linecons-desktop"></i>
-                    <span class="title">Services</span>
+                    <span class="title">Manage Customers</span>
                 </a>
             </li>
             <li>
                 <a href="./manage-portfolio.php">
-                    <i class="linecons-desktop"></i>
+                    <i class="linecons-note"></i>
                     <span class="title">Portfolio</span>
                 </a>
             </li>
             <li>
                 <a href="./manage-customer-feedback.php">
-                    <i class="linecons-desktop"></i>
+                    <i class="linecons-user"></i>
                     <span class="title">Customer Feedback</span>
                 </a>
             </li>
