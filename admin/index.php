@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
 include '../class/include.php';
 include './auth.php';
 ?>
@@ -34,14 +34,25 @@ include './auth.php';
 
         <?php include './components/navigation.php' ?>
 
-        <div class="main-content"> 
+        <div class="main-content">
 
             <!-- navogation panel start-->
             <?php include './components/header.php' ?>
             <!--navigation panel end -->
 
             <div class="row">
-
+                <div class="col-md-12">
+                    <?php
+                    if (isset($_GET['message'])) {
+                        $MESSAGE = new Message($_GET['message']);
+                    ?>
+                        <div class="alert alert-<?php echo $MESSAGE->status; ?>" role="alert">
+                            <?php echo $MESSAGE->description; ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
                 <div class="col-sm-3">
 
                     <div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
