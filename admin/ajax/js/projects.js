@@ -1,125 +1,52 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
+   //Create slider
+   $("#create").click(function (event) {
+      event.preventDefault();
 
-    //Create slider
-    $("#create").click(function(event) {
-        event.preventDefault();
+      if (!$("#description").val() || $("#description").val().length === 0) {
+         swal({
+            title: "Error!",
+            text: "Please enter description",
+            type: "error",
+            timer: 2000,
+            showConfirmButton: false,
+         });
+      } else if (!$("#price").val() || $("#price").val().length === 0) {
+         swal({
+            title: "Error!",
+            text: "Please enter price",
+            type: "error",
+            timer: 2000,
+            showConfirmButton: false,
+         });
+      } else {
+         //start preloarder
+         // $('.someBlock').preloader();
 
-        if (!$('#project_name').val() || $('#project_name').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter project name",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
-            });
-        } else {
-            //start preloarder
-            // $('.someBlock').preloader();
+         $.ajax({
+            url: "ajax/php/invoice.php",
+            type: "POST",
+            data: $("form#form-data").serialize(),
+            dataType: "json",
+            success: function (result) {
+               // add description to table
 
-            //grab all form data  
-            var formData = new FormData($("form#form-data")[0]);
-
-            $.ajax({
-                url: "ajax/php/projects.php",
-                type: 'POST',
-                data: formData,
-                async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-                success: function(result) {
-
-                    //remove preloarder
-                    // $('.someBlock').preloader('remove');
-
-                    if (result.status === 'success') {
-                        swal({
-                            title: "success!",
-                            text: "Your data saved successfully !",
-                            type: 'success',
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                        window.setTimeout(function() {
-                            window.location.reload();
-                        }, 2000);
-                    } else if (result.status === 'error') {
-                        swal({
-                            title: "Error!",
-                            text: "Something went wrong",
-                            type: 'error',
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                    }
-                }
-            });
-        }
-        return false;
-    });
-
-
-    //Update slider
-    $("#update").click(function(event) {
-        event.preventDefault();
-
-        if (!$('#project_name').val() || $('#project_name').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter project name",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
-            });
-
-
-        } else {
-
-            //start preloarder
-            //$('.someBlock').preloader();
-            //grab all form data  
-            var formData = new FormData($("form#form-data")[0]);
-
-            $.ajax({
-                url: "ajax/php/projects.php",
-                type: 'POST',
-                data: formData,
-                async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: "JSON",
-                success: function(result) {
-
-                    //remove preloarder
-                    // $('.someBlock').preloader('remove');
-
-                    if (result.status == 'success') {
-                        swal({
-                            title: "success!",
-                            text: "Your data updated successfully !",
-                            type: 'success',
-                            timer: 2500,
-                            showConfirmButton: false
-                        });
-                        window.setTimeout(function() {
-                            window.location.reload();
-                        }, 2000);
-
-                    } else if (result.status === 'error') {
-                        swal({
-                            title: "Error!",
-                            text: "Something went wrong",
-                            type: 'error',
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                    }
-                }
-            });
-
-        }
-        return false;
-    });
+               if (result.status === "success") {
+                  $("#description").val('');
+                  $("#price").val('');
+                  $("#preview-invoice").html(result.invoice);
+               } else {
+                  swal({
+                     title: "Error!",
+                     text: "Something went wrong",
+                     type: "error",
+                     timer: 2000,
+                     showConfirmButton: false,
+                  });
+               }
+            },
+         });
+      }
+      return false;
+   });
 });

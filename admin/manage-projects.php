@@ -276,10 +276,13 @@ $CUSTOMER = new Customer($id);
                                         <!-- <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
                                             Delete
                                         </a> -->
-
-                                        <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-                                            Create Invoice
-                                        </a>
+                                        <form action="ajax/php/invoice.php" method="post" class="inline">
+                                            <input type="hidden" name="project_id" value="<?php echo $projects['id'] ?>" />
+                                            <input type="hidden" name="action" value="create" />
+                                            <button type="submit" class="btn btn-info btn-sm btn-icon icon-left">
+                                                Create Invoice
+                                            </button>
+                                        </form>
                                         <a href="#" class="btn btn-primary btn-sm btn-icon icon-left">
                                             Manage Invoices
                                         </a>

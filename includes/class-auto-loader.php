@@ -12,7 +12,7 @@ spl_autoload_register('classAutoLoader');
 
 function classAutoLoader($className)
 {
-  $path = dirname(__FILE__) . "/../class/" . str_replace('\\', '/', $className) . ".class.php";
+  $path = dirname(__FILE__) . "/../class/" . str_replace('\\', '/', $className) . ".php";
   if (!file_exists($path)) return false;
   include_once($path);
 }

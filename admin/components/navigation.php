@@ -6,12 +6,12 @@
 
             <!-- logo -->
             <div class="logo">
-                <a href="index.php" class="logo-expanded">
-                    <img src="assets/images/logo.png" style="width:100%" alt="" />
+                <a href="./" class="logo-expanded">
+                    <img src="assets/images/logo.png" style="width:100%"  alt="" />
                 </a>
 
-                <a href="dashboard-1.html" class="logo-collapsed">
-                    <img src="assets/images/logo.png" style="width:100%" alt="" />
+                <a href="./" class="logo-collapsed">
+                    <img src="assets/images/logo.png"  style="width:100%" alt="" />
                 </a>
             </div>
         </header>

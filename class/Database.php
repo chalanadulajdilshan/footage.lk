@@ -23,7 +23,7 @@
     
     
         private $host = 'localhost';
-        private $name = 'footage';
+        private $name = 'footage.lk';
         private $user = 'root';
         private $password = '';
         public $DB_CON = '';
