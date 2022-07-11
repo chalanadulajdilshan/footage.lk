@@ -15,7 +15,9 @@ class Invoice
     public $id;
     public $customer_id;
     public $project_id;
+    public $note;
     public $total;
+    public $date;
     public $created_at;
 
     public function __construct($id)
@@ -27,7 +29,9 @@ class Invoice
             $this->id = $result['id'];
             $this->customer_id = $result['customer_id'];
             $this->project_id = $result['project_id'];
+            $this->note = $result['note'];
             $this->total = $result['total'];
+            $this->date = $result['date'];
             $this->created_at = $result['created_at'];
             return $this;
         }
@@ -70,7 +74,7 @@ class Invoice
     }
     public function getInvoiceByProjectId($project_id)
     {
-        $query = "SELECT * FROM `invoice` WHERE `project_id`= $project_id ORDER BY queue ASC";
+        $query = "SELECT * FROM `invoice` WHERE `project_id`= $project_id ORDER BY id ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -82,10 +86,14 @@ class Invoice
     public function update()
     {
         $query = "UPDATE  `invoice` SET "
-            . "`customer_id` ='" . $this->customer_id . "' "
-            . "`project_id` ='" . $this->project_id . "' "
-            . "`total` ='" . $this->total . "' "
+            . "`customer_id` ='" . $this->customer_id . "', "
+            . "`project_id` ='" . $this->project_id . "', "
+            . "`note` ='" . @htmlspecialchars($this->note) . "', "
+            . "`total` ='" . $this->total . "', "
+            . "`date` ='" . $this->date . "' "
             . "WHERE `id` = '" . $this->id . "'";
+        // var_dump($query);
+        // exit;
         $db = new Database();
         $result = $db->readQuery($query);
         if ($result) {

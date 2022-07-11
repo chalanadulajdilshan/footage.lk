@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2022 at 12:53 AM
+-- Generation Time: Jul 11, 2022 at 10:18 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -27,11 +27,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `invoice`
 --
 
+DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE `invoice` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `project_id` int(11) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
   `total` double DEFAULT NULL,
+  `date` date DEFAULT current_timestamp(),
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,10 +44,13 @@ CREATE TABLE `invoice` (
 -- Table structure for table `invoice_details`
 --
 
+DROP TABLE IF EXISTS `invoice_details`;
 CREATE TABLE `invoice_details` (
   `id` int(11) NOT NULL,
   `invoice_id` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL,
+  `days` int(11) DEFAULT NULL,
+  `rate` double DEFAULT NULL,
   `price` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -15,6 +15,8 @@ class InvoiceDetail
     public $id;
     public $invoice_id;
     public $description;
+    public $days;
+    public $rate;
     public $price;
 
     public function __construct($id)
@@ -26,6 +28,8 @@ class InvoiceDetail
             $this->id = $result['id'];
             $this->invoice_id = $result['invoice_id'];
             $this->description = $result['description'];
+            $this->days = $result['days'];
+            $this->rate = $result['rate'];
             $this->price = $result['price'];
 
             return $this;
@@ -33,9 +37,12 @@ class InvoiceDetail
     }
     public function create()
     {
-        $query = "INSERT INTO `invoice_details` ( `invoice_id`,`description`,`price`) VALUES  ('"
+        $this->price = $this->rate * $this->days;
+        $query = "INSERT INTO `invoice_details` ( `invoice_id`,`description`,`days`,`rate`,`price`) VALUES  ('"
             . $this->invoice_id . "', '"
             . $this->description . "', '"
+            . $this->days . "', '"
+            . $this->rate . "', '"
             . $this->price . "')";
         $db = new Database();
         $result = $db->readQuery($query);
@@ -71,8 +78,10 @@ class InvoiceDetail
     public function update()
     {
         $query = "UPDATE  `invoice_details` SET "
-            . "`invoice_id` ='" . $this->invoice_id . "' "
-            . "`description` ='" . $this->description . "' "
+            . "`invoice_id` ='" . $this->invoice_id . "', "
+            . "`description` ='" . $this->description . "', "
+            . "`days` ='" . $this->days . "', "
+            . "`rate` ='" . $this->rate . "', "
             . "`price` ='" . $this->price . "' "
             . "WHERE `id` = '" . $this->id . "'";
         $db = new Database();

@@ -1,10 +1,14 @@
 <?php
 include_once "../includes/class-auto-loader.php";
 $id = "";
-$id = $_GET['invoice-id'];
-$INVOICE = new Invoice($id);
-$PROJECT = new Projects($INVOICE->project_id);
-$DETAILS = new InvoiceDetail(NULL);
+$id = $_GET['project-id'];
+if (empty($id)) {
+    header('location:' . $_SERVER['HTTP_REFERER']);
+}
+$PROJECT = new Projects($id);
+$INVOICE = new Invoice(null);
+$CUSTOMER = new Customer($PROJECT->customer_id);
+$invoices = $INVOICE->getInvoiceByProjectId($PROJECT->id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,49 +37,62 @@ $DETAILS = new InvoiceDetail(NULL);
     <div class="page-container">
         <?php include './components/navigation.php' ?>
         <div class="main-content">
+            <!-- navogation panel start-->
+            <?php include './components/header.php' ?>
             <!--navigation panel end -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Add Invoice details</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" class="form-horizontal" role="form" id="form-data">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="description">Description</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="description" id="description" placeholder="Description">
-                                    </div>
-                                </div>
-                                <div class=" form-group">
-                                    <label class="col-sm-2 control-label" for="price">Price</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="price" name="price" placeholder="Enter the project name">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-10"></div>
-                                        <div class="col-sm-2">
-                                            <button type="submit" id="create" name="create" class="btn btn-secondary btn-single">Add</button>
-                                            <input type="hidden" name="invoice_id" value="<?= $INVOICE->id ?>">
-                                            <input type="hidden" name="add-invoice-details" value="<?= $INVOICE->id ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Basic Setup -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Invoice</h3>
+                    <h3 class="panel-title">Manage Projects</h3>
+                    <div class="panel-options">
+                        <a href="#" data-toggle="panel">
+                            <span class="collapse-icon">&ndash;</span>
+                            <span class="expand-icon">+</span>
+                        </a>
+                        <a href="#" data-toggle="remove">
+                            &times;
+                        </a>
+                    </div>
                 </div>
-                <div class="panel-body" id="preview-invoice">
-                    <?php $details = $DETAILS->getDetailsByInvoiceId($INVOICE->id); ?>
-                    <?php include '../components/emails/invoice.php' ?>
+                <div class="panel-body">
+                    <script type="text/javascript">
+                        jQuery(document).ready(function($) {
+                            $("#example-1").dataTable({
+                                aLengthMenu: [
+                                    [10, 25, 50, 100, -1],
+                                    [10, 25, 50, 100, "All"]
+                                ]
+                            });
+                        });
+                    </script>
+                    <table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>INVOICE ID</th>
+                                <th>NOTE</th>
+                                <th>TOTAL</th>
+                                <th>DATE</th>
+                                <th>CREATED_AT</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($invoices as  $invoice) : ?>
+                                <tr>
+                                    <td><?= str_pad($invoice['id'], 5, 0, STR_PAD_LEFT) ?></td>
+                                    <td><?= $invoice['note'] ?></td>
+                                    <td><?= $invoice['total'] ?></td>
+                                    <td><?= $invoice['date'] ?></td>
+                                    <td><?= $invoice['created_at'] ?></td>
+                                    <td>
+                                        <a href="invoice.php?invoice-id=<?= $invoice['id'] ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <?php include './components/footer.php' ?>
@@ -103,6 +120,7 @@ $DETAILS = new InvoiceDetail(NULL);
     <script src="assets/js/xenon-widgets.js"></script>
     <!-- SweetAlert2 -->
     <script src="assets/sweetalert/sweetalert.min.js"></script>
+    <script src="../js/notify.min.js"></script>
     <!-- JavaScripts initializations and stuff -->
     <script src="assets/js/xenon-custom.js"></script>
     <script type="text/javascript" src="./ajax/js/projects.js"></script>

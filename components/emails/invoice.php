@@ -27,7 +27,8 @@
             font-weight: 400;
         }
 
-        table tbody tr td {
+        table tbody tr td,
+        table thead tr th {
             border-right: 1px solid #d4d4d4;
             padding: 5px 10px;
         }
@@ -55,7 +56,7 @@
 
 <body>
     <?php
-    $date = date_create($INVOICE->created_at);
+    $date = date_create($INVOICE->date);
     $created_at = date_format($date, "d/m/Y");
     ?>
     <div style="width: 580px;margin: auto;">
@@ -65,42 +66,42 @@
                     <h2>myfootagelk</h2>
                     <p>true views, true inspiration</p>
                 </div>
-                <div style="flex:1;display: flex;flex-direction: column;align-items: flex-end;line-height: 0px;">
+                <div style="flex:1;display: flex;flex-direction: column;align-items: flex-end;">
                     <h3 style="font-size: 30px;">INVOICE</h3>
-                    <p>DATE: <span style="background: #c0d7ff6b;padding: 5px 10px;min-width: 90px;"><?= $created_at ?></span> </p>
-                    <p>INVOICE #<span style="background: #e5e5e56b;padding: 5px 10px;min-width: 90px;"><?= str_pad($INVOICE->id, 5, 0, STR_PAD_LEFT) ?></span></p>
+                    <div style="margin-bottom: 1px;">DATE:
+                        <span style="background: #c0d7ff6b;padding: 2px 10px;min-width: 90px;display: inline-block;"><?= $created_at ?></span>
+                    </div>
+                    <div>
+                        INVOICE #<span style="background: #e5e5e56b;padding: 2px 10px;min-width: 90px;display: inline-block;"><?= str_pad($INVOICE->id, 5, 0, STR_PAD_LEFT) ?></span>
+                    </div>
                 </div>
             </div>
 
             <div style="background: gray; width:25%;color: #fff;padding-left: 5px;">BILL TO</div>
-            <address style="margin-bottom: 50px;margin-top: 10px;">
-                Advantis Projects <br>
-                No. 148 B, Nawalokapura,<br>
-                Sedawatte, Wellampitiya
+            <address style="margin-bottom: 50px;margin-top: 10px;width: 40%;">
+                <?= $CUSTOMER->address ?>
             </address>
 
             <div style="background: gray; width:25%;color: #fff;padding-left: 5px;">NOTE</div>
-            <address style="margin-bottom: 50px;margin-top: 10px;">
-                Habarana Project 07 days Video Production<br>
-                Aerial Videography, Timelapse & Hyper-lapse<br>
-                2- 3-Minute Project Video with background music
+            <address style="margin-bottom: 50px;margin-top: 10px;width: 40%;">
+                <?= $INVOICE->note ?>
             </address>
 
             <table style="border-collapse: collapse;width: 100%;">
                 <thead style="background: gray;color: #fff">
                     <tr>
                         <th>DESCRIPTION</th>
-                        <th>DAYS</th>
-                        <th>RATE</th>
-                        <th>AMOUNT</th>
+                        <th style="text-align: center;">DAYS</th>
+                        <th style="text-align: right;">RATE (LKR)</th>
+                        <th style="text-align: right;">AMOUNT (LKR)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($details as $detail) : ?>
                         <tr>
                             <td><?= $detail['description'] ?></td>
-                            <td style="text-align: center;">-</td>
-                            <td style="text-align: right;">-</td>
+                            <td style="text-align: center;"><?= $detail['days'] ?></td>
+                            <td style="text-align: right;"><?= number_format($detail['rate'], 2) ?></td>
                             <td style="text-align: right;"><?= number_format($detail['price'], 2) ?></td>
                         </tr>
                     <?php endforeach; ?>
