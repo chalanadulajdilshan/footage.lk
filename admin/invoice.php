@@ -166,7 +166,7 @@ $DETAILS = new InvoiceDetail(NULL);
     <script src="../js/notify.min.js"></script>
     <!-- JavaScripts initializations and stuff -->
     <script src="assets/js/xenon-custom.js"></script>
-    <script type="text/javascript" src="./ajax/js/projects.js"></script>
+    <script type="text/javascript" src="./ajax/js/invoice.js"></script>
 </body>
 
 </html>
