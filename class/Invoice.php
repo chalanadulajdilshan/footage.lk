@@ -61,6 +61,13 @@ class Invoice
         }
         return $array_res;
     }
+    public function all_count()
+    {
+        $query = "SELECT count(*) `count` FROM `invoice`";
+        $db = new Database();
+        $result = mysqli_fetch_array($db->readQuery($query));
+        return $result['count'] ?: 0;
+    }
     public function getInvoiceByCustomerId($customer_id)
     {
         $query = "SELECT * FROM `invoice` WHERE `customer_id`= $customer_id ORDER BY queue ASC";

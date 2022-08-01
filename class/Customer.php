@@ -81,6 +81,13 @@ class Customer
 
         return $array_res;
     }
+    public function all_count()
+    {
+        $query = "SELECT count(*) `count` FROM `customer`";
+        $db = new Database();
+        $result = mysqli_fetch_array($db->readQuery($query));
+        return $result['count'] ?: 0;
+    }
 
     public function update()
     {

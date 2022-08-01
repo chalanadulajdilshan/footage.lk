@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <?php
-include '../class/include.php';
+include '../includes/class-auto-loader.php';
 include './auth.php';
+
+$total_customers = (new Customer(null))->all_count();
+$total_projects = (new Projects(null))->all_count();
+$total_invoices = (new Invoice(null))->all_count();
+$total_portfolios = (new Portfolio(null))->all_count();
 ?>
 <html lang="en">
 
@@ -55,27 +60,13 @@ include './auth.php';
                 </div>
                 <div class="col-sm-3">
 
-                    <div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
-                        <div class="xe-icon">
-                            <i class="linecons-cloud"></i>
-                        </div>
-                        <div class="xe-label">
-                            <strong class="num">0.0%</strong>
-                            <span>Server uptime</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-sm-3">
-
-                    <div class="xe-widget xe-counter xe-counter-blue" data-count=".num" data-from="1" data-to="117" data-suffix="k" data-duration="3" data-easing="false">
+                    <div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="<?= $total_customers ?>" data-duration="2">
                         <div class="xe-icon">
                             <i class="linecons-user"></i>
                         </div>
                         <div class="xe-label">
-                            <strong class="num">1k</strong>
-                            <span>Users Total</span>
+                            <strong class="num">0</strong>
+                            <span>Total Customers</span>
                         </div>
                     </div>
 
@@ -83,13 +74,27 @@ include './auth.php';
 
                 <div class="col-sm-3">
 
-                    <div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="1000" data-to="2470" data-duration="4" data-easing="true">
+                    <div class="xe-widget xe-counter xe-counter-blue" data-count=".num" data-from="0" data-to="<?= $total_projects ?>" data-duration="3" data-easing="false">
+                        <div class="xe-icon">
+                            <i class="linecons-cloud"></i>
+                        </div>
+                        <div class="xe-label">
+                            <strong class="num">0</strong>
+                            <span>Total Projects</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="0" data-to="<?= $total_invoices ?>" data-duration="4" data-easing="true">
                         <div class="xe-icon">
                             <i class="linecons-camera"></i>
                         </div>
                         <div class="xe-label">
-                            <strong class="num">1000</strong>
-                            <span>New Daily Photos</span>
+                            <strong class="num">0</strong>
+                            <span>Total Invoices</span>
                         </div>
                     </div>
 
@@ -97,13 +102,13 @@ include './auth.php';
 
                 <div class="col-sm-3">
 
-                    <div class="xe-widget xe-counter xe-counter-red" data-count=".num" data-from="0" data-to="57" data-prefix="-," data-suffix="%" data-duration="5" data-easing="true" data-delay="1">
+                    <div class="xe-widget xe-counter xe-counter-red" data-count=".num" data-from="0" data-to="<?= $total_portfolios ?>" data-duration="5" data-easing="true" data-delay="1">
                         <div class="xe-icon">
                             <i class="linecons-lightbulb"></i>
                         </div>
                         <div class="xe-label">
-                            <strong class="num">-,0%</strong>
-                            <span>Exchange Commission</span>
+                            <strong class="num">0</strong>
+                            <span>Total Portfolios</span>
                         </div>
                     </div>
 
