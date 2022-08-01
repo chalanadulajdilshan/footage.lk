@@ -7,11 +7,11 @@
             <!-- logo -->
             <div class="logo">
                 <a href="./" class="logo-expanded">
-                    <img src="assets/images/logo.png" style="width:100%"  alt="" />
+                    <img src="assets/images/logo.png" style="width:100%" alt="" />
                 </a>
 
                 <a href="./" class="logo-collapsed">
-                    <img src="assets/images/logo.png"  style="width:100%" alt="" />
+                    <img src="assets/images/logo.png" style="width:100%" alt="" />
                 </a>
             </div>
         </header>
@@ -50,6 +50,26 @@
                     <i class="linecons-user"></i>
                     <span class="title">Customer Feedback</span>
                 </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="fa fa-image"></i>
+                    <span>Photo Album</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="create-album.php">
+                            <i class="fa fa-arrow-right"></i>
+                            <span>Add New / Manage</span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="arrange-photo-album.php">
+                            <i class="fa fa-arrow-right"></i>
+                            <span>Arrange</span>
+                        </a>
+                    </li> -->
+                </ul>
             </li>
         </ul>
 

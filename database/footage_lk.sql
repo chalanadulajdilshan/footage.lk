@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2022 at 10:18 PM
+-- Generation Time: Aug 01, 2022 at 08:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -24,50 +24,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `invoice`
+-- Table structure for table `album`
 --
 
-DROP TABLE IF EXISTS `invoice`;
-CREATE TABLE `invoice` (
+DROP TABLE IF EXISTS `album`;
+CREATE TABLE `album` (
   `id` int(11) NOT NULL,
-  `customer_id` int(11) DEFAULT NULL,
-  `project_id` int(11) DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,
-  `total` double DEFAULT NULL,
-  `date` date DEFAULT current_timestamp(),
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `title` varchar(255) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `queue` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `invoice_details`
+-- Table structure for table `album_photo`
 --
 
-DROP TABLE IF EXISTS `invoice_details`;
-CREATE TABLE `invoice_details` (
+DROP TABLE IF EXISTS `album_photo`;
+CREATE TABLE `album_photo` (
   `id` int(11) NOT NULL,
-  `invoice_id` int(11) DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `days` int(11) DEFAULT NULL,
-  `rate` double DEFAULT NULL,
-  `price` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `album` int(11) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
+  `caption` varchar(255) NOT NULL,
+  `queue` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `invoice`
+-- Indexes for table `album`
 --
-ALTER TABLE `invoice`
+ALTER TABLE `album`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `invoice_details`
+-- Indexes for table `album_photo`
 --
-ALTER TABLE `invoice_details`
+ALTER TABLE `album_photo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -75,15 +72,15 @@ ALTER TABLE `invoice_details`
 --
 
 --
--- AUTO_INCREMENT for table `invoice`
+-- AUTO_INCREMENT for table `album`
 --
-ALTER TABLE `invoice`
+ALTER TABLE `album`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `invoice_details`
+-- AUTO_INCREMENT for table `album_photo`
 --
-ALTER TABLE `invoice_details`
+ALTER TABLE `album_photo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class Helper {
 
-    public function randamId() {
+    public static function randamId() {
 
 
 
@@ -42,7 +42,7 @@ class Helper {
         return array($result2, $newHeight);
     }
 
-    public function getSitePath() {
+    public static function getSitePath() {
 
 //        return substr_replace(dirname(__FILE__), '', 26);
 
