@@ -1,11 +1,11 @@
 <?php
 include_once "../includes/class-auto-loader.php";
 $id = "";
-$id = $_GET['invoice-id'];
-$INVOICE = new Invoice($id);
-$PROJECT = new Projects($INVOICE->project_id);
-$CUSTOMER = new Customer($INVOICE->customer_id);
-$DETAILS = new InvoiceDetail(NULL);
+$id = $_GET['quotation-id'];
+$QUOTATION = new Quotation($id);
+$PROJECT = new Projects($QUOTATION->project_id);
+$CUSTOMER = new Customer($QUOTATION->customer_id);
+$DETAILS = new QuotationDetail(NULL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@ $DETAILS = new InvoiceDetail(NULL);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Xenon Boostrap Admin Panel" />
     <meta name="author" content="" />
-    <title>Create Invoice - SourceCode.lk</title>
+    <title>Create Quotation - SourceCode.lk</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
     <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
     <link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
@@ -36,7 +36,7 @@ $DETAILS = new InvoiceDetail(NULL);
         <div class="main-content">
             <!-- navogation panel start-->
             <?php include './components/header.php' ?>
-            <!--navigation panel end --> 
+            <!--navigation panel end -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default">
@@ -44,11 +44,11 @@ $DETAILS = new InvoiceDetail(NULL);
                             <h3 class="panel-title">Edit Invoice</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" id="form-invoice">
+                            <form class="form-horizontal" id="form-quotation">
                                 <div class=" form-group">
                                     <label class="col-sm-2 control-label">Invoice ID</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" value="#<?= str_pad($INVOICE->id, 5, 0, STR_PAD_LEFT) ?>" disabled>
+                                        <input type="text" class="form-control" value="#<?= str_pad($QUOTATION->id, 5, 0, STR_PAD_LEFT) ?>" disabled>
                                     </div>
                                 </div>
                                 <div class=" form-group">
@@ -63,25 +63,43 @@ $DETAILS = new InvoiceDetail(NULL);
                                         <input type="text" class="form-control" value="<?= $PROJECT->project_name ?>" disabled>
                                     </div>
                                 </div>
+                                <div class=" form-group">
+                                    <label class="col-sm-2 control-label" for="cost">COST</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="cost" name="cost" placeholder="Enter the Cost">
+                                    </div>
+                                </div>
+                                <div class=" form-group">
+                                    <label class="col-sm-2 control-label" for="visit">VISIT</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="visits" name="visit" placeholder="Enter the Visits">
+                                    </div>
+                                </div>
+                                <div class=" form-group">
+                                    <label class="col-sm-2 control-label" for="advance">ADVANCE</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="advance" name="advance" placeholder="Enter the Advance payment">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="note">NOTE</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="note" id="note" value="<?= $INVOICE->note ?>" placeholder="NOTE">
+                                        <input type="text" class="form-control" name="note" id="note" value="<?= $QUOTATION->note ?>" placeholder="NOTE">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="date">Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" name="date" id="date" value="<?= $INVOICE->date ?>" placeholder="Invoice Date">
+                                        <input type="date" class="form-control" name="date" id="date" value="<?= $QUOTATION->date ?>" placeholder="Invoice Date">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
                                         <div class="col-md-10"></div>
                                         <div class="col-sm-2">
-                                            <button type="submit" id="edit-invoice" name="edit-invoice" class="btn btn-secondary btn-single">SAVE</button>
-                                            <input type="hidden" name="invoice_id" value="<?= $INVOICE->id ?>">
-                                            <input type="hidden" name="edit-invoice" value="<?= $INVOICE->id ?>">
+                                            <button type="submit" id="edit-quotation" name="edit-quotation" class="btn btn-secondary btn-single">SAVE</button>
+                                            <input type="hidden" name="quotation_id" value="<?= $QUOTATION->id ?>">
+                                            <input type="hidden" name="edit-quotation" value="<?= $QUOTATION->id ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -92,16 +110,10 @@ $DETAILS = new InvoiceDetail(NULL);
                 <div class="col-sm-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Add Invoice details</h3>
+                            <h3 class="panel-title">Add Quotation details</h3>
                         </div>
                         <div class="panel-body">
                             <form role="form" class="form-horizontal" role="form" id="form-data">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="description">Description</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="description" id="description" placeholder="Description">
-                                    </div>
-                                </div>
                                 <div class=" form-group">
                                     <label class="col-sm-2 control-label" for="days">Days</label>
                                     <div class="col-sm-10">
@@ -109,9 +121,21 @@ $DETAILS = new InvoiceDetail(NULL);
                                     </div>
                                 </div>
                                 <div class=" form-group">
-                                    <label class="col-sm-2 control-label" for="rate">Rate</label>
+                                    <label class="col-sm-2 control-label" for="rate">Rate (Unit Price)</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="rate" name="rate" placeholder="Enter the Day Rate Price">
+                                    </div>
+                                </div>
+                                <div class=" form-group">
+                                    <label class="col-sm-2 control-label" for="price">Amount</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="price" name="price" placeholder="Enter the amount">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="description">Description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="description" id="description" placeholder="Description">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -119,8 +143,8 @@ $DETAILS = new InvoiceDetail(NULL);
                                         <div class="col-md-10"></div>
                                         <div class="col-sm-2">
                                             <button type="submit" id="create" name="create" class="btn btn-secondary btn-single">Add</button>
-                                            <input type="hidden" name="invoice_id" value="<?= $INVOICE->id ?>">
-                                            <input type="hidden" name="add-invoice-details" value="<?= $INVOICE->id ?>">
+                                            <input type="hidden" name="quotation_id" value="<?= $QUOTATION->id ?>">
+                                            <input type="hidden" name="add-quotation-details" value="<?= $QUOTATION->id ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -133,9 +157,9 @@ $DETAILS = new InvoiceDetail(NULL);
                 <div class="panel-heading">
                     <h3 class="panel-title">Invoice</h3>
                 </div>
-                <div class="panel-body" id="preview-invoice">
-                    <?php $details = $DETAILS->getDetailsByInvoiceId($INVOICE->id); ?>
-                    <?php include '../components/emails/invoice.php' ?>
+                <div class="panel-body" id="preview-quotation">
+                    <?php $details = $DETAILS->getDetailsByInvoiceId($QUOTATION->id); ?>
+                    <?php include '../components/emails/quotation.php' ?>
                 </div>
             </div>
             <?php include './components/footer.php' ?>
@@ -166,7 +190,7 @@ $DETAILS = new InvoiceDetail(NULL);
     <script src="../js/notify.min.js"></script>
     <!-- JavaScripts initializations and stuff -->
     <script src="assets/js/xenon-custom.js"></script>
-    <script type="text/javascript" src="./ajax/js/invoice.js"></script>
+    <script type="text/javascript" src="./ajax/js/quotation.js"></script>
 </body>
 
 </html>

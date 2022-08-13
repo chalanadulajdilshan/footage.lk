@@ -4,8 +4,10 @@ include_once "../../../includes/class-auto-loader.php";
 if (isset($_POST['action'])) {
 
     $INVOICE = new Invoice(NULL);
-    $PROJECT = new Projects($_POST['project_id']);
+    $QUOTATION = new Quotation($_POST['quotation_id']);
+    $PROJECT = new Projects($QUOTATION->project_id);
 
+    $INVOICE->quotation_id = $QUOTATION->id;
     $INVOICE->project_id = $PROJECT->id;
     $INVOICE->customer_id = $PROJECT->customer_id;
 

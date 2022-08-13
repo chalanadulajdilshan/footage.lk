@@ -1,15 +1,14 @@
 <?php
 include_once "../includes/class-auto-loader.php";
 $id = "";
-$id = $_GET['quotation-id'];
+$id = $_GET['project-id'];
 if (empty($id)) {
     header('location:' . $_SERVER['HTTP_REFERER']);
 }
-$QUOTATION = new Quotation($id);
-$PROJECT = new Projects($QUOTATION->project_id);
-$INVOICE = new Invoice(null);
+$PROJECT = new Projects($id);
+$QUOTATION = new Quotation(null);
 $CUSTOMER = new Customer($PROJECT->customer_id);
-$invoices = $INVOICE->getInvoiceByQuotationId($QUOTATION->id);
+$quotations = $QUOTATION->getInvoiceByProjectId($PROJECT->id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,60 +41,7 @@ $invoices = $INVOICE->getInvoiceByQuotationId($QUOTATION->id);
             <?php include './components/header.php' ?>
             <!--navigation panel end -->
             <!-- Basic Setup -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Manage Invoices</h3>
-                    <div class="panel-options">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">&ndash;</span>
-                            <span class="expand-icon">+</span>
-                        </a>
-                        <a href="#" data-toggle="remove">
-                            &times;
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <script type="text/javascript">
-                        jQuery(document).ready(function($) {
-                            $("#example-1").dataTable({
-                                aLengthMenu: [
-                                    [10, 25, 50, 100, -1],
-                                    [10, 25, 50, 100, "All"]
-                                ]
-                            });
-                        });
-                    </script>
-                    <table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>INVOICE ID</th>
-                                <th>NOTE</th>
-                                <th>TOTAL</th>
-                                <th>DATE</th>
-                                <th>CREATED_AT</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($invoices as  $invoice) : ?>
-                                <tr>
-                                    <td><?= str_pad($invoice['id'], 5, 0, STR_PAD_LEFT) ?></td>
-                                    <td><?= $invoice['note'] ?></td>
-                                    <td><?= $invoice['total'] ?></td>
-                                    <td><?= $invoice['date'] ?></td>
-                                    <td><?= $invoice['created_at'] ?></td>
-                                    <td>
-                                        <a href="invoice.php?invoice-id=<?= $invoice['id'] ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
-                                            Edit
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <?php include './components/quotations.php' ?>
             <?php include './components/footer.php' ?>
         </div>
     </div>
